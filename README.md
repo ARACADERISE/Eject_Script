@@ -40,7 +40,7 @@ __If-Else__<br>
 __Hopefully will be formatted into__
 ```shell
 if [ $var_name_here == '' ]; then
-  echo "If iecho "If it evaluates truthy this will print"
+  echo "If it evaluates truthy this will print"
 else
   echo "ELSE it won't"
 fi
