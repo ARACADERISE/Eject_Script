@@ -6,7 +6,8 @@ How will you be able to format it? well..as I am not all that advanced(not as go
 hard-coded way to format the code and make it runable.
 ## ##
 <br>
-## ##
+
+
 __What and how I plan on hard-coding a python script to format AND run the .s file__
 <br>
 > As hard of a question that is, the answer is harder. What I plan on happening is actually creating some backend python sections
