@@ -79,8 +79,10 @@ __declare if you want the function/class/data type to be weakly typed__<br>
 @@./WEAK 
 ```
 <br>
+
 __delcare if you want the function/class/data type to be strongly typed__<br>
-``` # To declare a strongly typed 
+``` 
+# To declare a strongly typed 
 @@./STRONG 
 ```
 <br>
