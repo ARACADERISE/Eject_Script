@@ -33,7 +33,7 @@ __Hopefully will be formatted into__
 if [ $var_name_here == '' ];then
   echo "Action Should Happend Here. Doesn't have to be a echo!"
 ```
-__IfElse__
+__If-Else__<br>
 ```Ifelfi [ $var_name_here == '' ] = echo "If it evaluates truthy this will print" _ echo "ELSE it won't"```
 
 __Hopefully will be formatted into__
