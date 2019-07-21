@@ -45,5 +45,10 @@ else
 fi
 ```
   
-__Comment__
+__Comment__<br>
 ``` #This is a comment ```
+
+__Shoud hopefully be formatted to__
+```shell
+# COMMENT
+```
