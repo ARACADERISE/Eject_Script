@@ -18,6 +18,10 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 
 > __But how do I make it to where the GitHub user can compile it?__ <br>Well that is going to be another python file(of course) that includes the other files on how to build/code the language. And write some basic Python syntax code that checks if certain data(lines of code) is in the file, then re-format it to shell script so you don't have to waste your time writing Shell Script and can write lazily with the .s file!
 
+<br>
+
+> Yes, in order to format, or be able to run/compile the .s file, you have to have my repository cloned(unames right now), and when you want to run your application you have to write a file that cd(s) into my directory, then you have to type in the file name(unamed right now) that acitvates/reads the .s file, then you got to exit that shell script file.<br>__Yes I know, I am getting ahead of myself and how exactly this is going to work, and IDEK if it will work, but trust me, I don't give up so I will give this project my all__
+
 
 ### What I plan on having in the .s file
 
