@@ -75,15 +75,19 @@ __Will be__<br>
 
 __declare if you want the function/class/data type to be weakly typed__<br>
 ``` 
-# To declare a weakly typed 
+# To declare a weakly typed function/class
 @@./WEAK 
+# To declare a weakly typed variable
+@@./weak_var NAME = DATA_OF_VAR
 ```
 <br>
 
 __delcare if you want the function/class/data type to be strongly typed__<br>
 ``` 
-# To declare a strongly typed 
+# To declare a strongly typed function/class
 @@./STRONG 
+# To delcare a strongly typed variable
+@@./strong_var type_of_data(ex string,int,doulbe) = THAT_DATAS_INFO
 ```
 <br>
 - *Weakly typed means you can assign a variable name any data type then reassign it.*<br>
