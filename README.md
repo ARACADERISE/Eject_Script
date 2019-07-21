@@ -52,3 +52,11 @@ __Shoud hopefully be formatted to__
 ```shell
 # COMMENT
 ```
+
+### Now. There are gonna be some stuff that will stay the same.
+__Getting into a directory(same as shell so i'm just gonna format a shell version)__<br>
+```shell
+cd DIRECTORY_NAME
+```
+__Will be__<br>
+``` cd DIRECTORY_NAME ```
