@@ -63,7 +63,6 @@ __Will be__<br>
 
 __ls__<br>
 ```shell
-int n = 40
 ls
 ```
 
@@ -72,5 +71,10 @@ __Will be__<br>
 
 ### Now. With the assignments/classes/functions/strongly_typed functions/classes or weakly types functions/classes
 
+*Note: This will just help write the script and will also help format it into shell script. This is just a better way to not change the value of the variable assigned*
+
 __declare if you want the function/class to be weakly typed__<br>
-``` # To declare a weakly typed @@./WEAK ```
+``` # To declare a weakly typed @@./WEAK ```<br>
+``` # To declare a strongly typed @@./STRONG ```<br>
+*Weakly typed means you can assign a variable name any data type then reassign it.*<br>
+*Strongly typed means you declare the type of data(int,char,string,float,double)and it stays that way, unable to change the data type*
