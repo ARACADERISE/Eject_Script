@@ -21,4 +21,4 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 
 ### What I plan on having in the .s file
 
-```Ifthenfi [ $var_name_here == '' ] _= action_that_should_happen```
+```Iffi [ $var_name_here == '' ] _= action_that_should_happen```
