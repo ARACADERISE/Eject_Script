@@ -60,3 +60,17 @@ cd DIRECTORY_NAME
 ```
 __Will be__<br>
 ``` cd DIRECTORY_NAME ```
+
+__ls__<br>
+```shell
+int n = 40
+ls
+```
+
+__Will be__<br>
+``` ls ```
+
+### Now. With the assignments/classes/functions/strongly_typed functions/classes or weakly types functions/classes
+
+__declare if you want the function/class to be weakly typed__<br>
+``` # To declare a weakly typed @@./WEAK ```
