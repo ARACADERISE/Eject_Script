@@ -16,4 +16,4 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 
 <br>
 
-> But how do I make it to where the GitHub user can compile it? Well that is going to be another python file(of course) that includes the other files on how to build/code the language. And write some basic Python syntax code that checks if certain data(lines of code) is in the file, then re-format it to shell script so you don't have to waste your time writing Shell Script and can write lazily with the .s file!
+> __But how do I make it to where the GitHub user can compile it?__ Well that is going to be another python file(of course) that includes the other files on how to build/code the language. And write some basic Python syntax code that checks if certain data(lines of code) is in the file, then re-format it to shell script so you don't have to waste your time writing Shell Script and can write lazily with the .s file!
