@@ -25,4 +25,14 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 
 ### What I plan on having in the .s file
 
+__If statement__
 ```Iffi [ $var_name_here == '' ] = action_that_should_happen```
+__Hopefully will be formatted into__
+```shellscript
+if [];then
+  ACTION_HERE
+```
+__IfElse__
+```Ifelfi [ $var_name_here == '' ] = action_that_should_happen```
+__Comment__
+``` #This is a comment ```
