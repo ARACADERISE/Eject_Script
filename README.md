@@ -32,6 +32,7 @@ __Hopefully will be formatted into__
 ```shell
 if [ $var_name_here == '' ];then
   echo "Action Should Happend Here. Doesn't have to be a echo!"
+fi
 ```
 __If-Else__<br>
 ```Ifelfi [ $var_name_here == '' ] = echo "If it evaluates truthy this will print" _ echo "ELSE it won't"```
