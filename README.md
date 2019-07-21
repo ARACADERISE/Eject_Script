@@ -26,16 +26,24 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 ### What I plan on having in the .s file
 
 __If statement__
-```Iffi [ $var_name_here == '' ] = action_that_should_happen```
-
-<br>
+```Iffi [ $var_name_here == '' ] = echo "Action Should Happend Here. Doesn't have to be a echo!"```
 
 __Hopefully will be formatted into__
 ```shell
-if [];then
-  ACTION_HERE
+if [ $var_name_here == '' ];then
+  echo "Action Should Happend Here. Doesn't have to be a echo!"
 ```
 __IfElse__
-```Ifelfi [ $var_name_here == '' ] = action_that_should_happen```
+```Ifelfi [ $var_name_here == '' ] = echo "If it evaluates truthy this will print" _ echo "ELSE it won't"```
+
+__Hopefully will be formatted into__
+```shell
+if [ $var_name_here == '' ]; then
+  echo "If iecho "If it evaluates truthy this will print"
+else
+  echo "ELSE it won't"
+fi
+```
+  
 __Comment__
 ``` #This is a comment ```
