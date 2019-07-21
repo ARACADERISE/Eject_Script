@@ -20,7 +20,7 @@ and class should look like. Yeah yeah you should get it by now..I am going to ha
 
 <br>
 
-> Yes, in order to format, or be able to run/compile the .s file, you have to have my repository cloned(unames right now), and when you want to run your application you have to write a file that cd(s) into my directory, then you have to type in the file name(unamed right now) that acitvates/reads the .s file, then you got to exit that shell script file.<br>__Yes I know, I am getting ahead of myself and how exactly this is going to work, and IDEK if it will work, but trust me, I don't give up so I will give this project my all__
+> Yes, in order to format, or be able to run/compile the .s file, you have to have my repository cloned(unames right now), and when you want to run your application you have to write a file(a .sh __Sorry, but there is no other way to actually do this unless you want to go another 4 minutes of typing inside your terminal. I do understand it kinda takes the point away but trust me, it is, what, 4-5 lines of code that is what you do daily if you use your terminal. So don't wine__) that cd(s) into my directory, then you have to type in the file name(unamed right now) that acitvates/reads the .s file, then you got to exit that shell script file.<br>__Yes I know, I am getting ahead of myself and how exactly this is going to work, and IDEK if it will work, but trust me, I don't give up so I will give this project my all__
 
 
 ### What I plan on having in the .s file
