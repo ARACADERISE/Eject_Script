@@ -90,6 +90,9 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 # To delcare a strongly typed variable
 @@./strong_var type_of_data(ex string,int,doulbe) = THAT_DATAS_INFO
 ```
+
+# #
+
 <br>
 - *Weakly typed means you can assign a variable name any data type then reassign it.*<br>
 - *Strongly typed means you declare the type of data(int,char,string,float,double)and it stays that way, unable to change the data type*
