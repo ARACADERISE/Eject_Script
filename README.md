@@ -95,4 +95,4 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 - *Strongly typed means you declare the type of data(int,char,string,float,double)and it stays that way, unable to change the data type*
 
 __NOTE:__<br>
-1 Please do not be looking forward to this project being succesful
+1. Please do not be looking forward to this project being succesful
