@@ -94,5 +94,7 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 - *Weakly typed means you can assign a variable name any data type then reassign it.*<br>
 - *Strongly typed means you declare the type of data(int,char,string,float,double)and it stays that way, unable to change the data type*
 
+# #
+
 <br>__NOTE:__<br>
  *Please do not be looking forward to this project being succesful*
