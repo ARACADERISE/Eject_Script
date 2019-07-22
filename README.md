@@ -88,7 +88,7 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 # To declare a strongly typed function/class
 @@./STRONG 
 # To delcare a strongly typed variable
-@@./strong_var type_of_data(ex string,int,doulbe) = THAT_DATAS_INFO
+@@./strong_var type_of_data(ex string,int,double) = THAT_DATAS_INFO
 ```
 
 # #
@@ -99,4 +99,5 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 # #
 
 <br>__NOTE:__<br>
- *Please do not be looking forward to this project being succesful*
+ 1. *Please do not be looking forward to this project being succesful*
+ 2. *When I say "var" I just mean the variables type/data. Not like a javascripit keyword "var". Just wanna let you know!*
