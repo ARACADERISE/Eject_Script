@@ -93,7 +93,7 @@ __delcare if you want the function/class/data type to be strongly typed__<br>
 
 # #
 
-- *Weakly typed means you can assign a variable name any data type then reassign it a different type(ex: @@./weak_var my_name = "Aidan" (80 lines later) my_name = 450 (bad example but you get the point)*<br>
+- *Weakly typed means you can assign a variable name any data type then reassign it a different type. ex: @@./weak_var my_name = "Aidan" (80 lines later) my_name = 450 (bad example but you get the point)*<br>
 - *Strongly typed means you declare the type of data(int,char,string,float,double)and it stays that way, unable to change the data type*
 
 # #
