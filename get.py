@@ -9,7 +9,10 @@ import os, time
 from comments.singleLine import comment
 from colorama import Fore, Style
 
-os.system('bash setup_check.sh')
+if not os.path.exists('/data/data/com.termux/files/usr/bin/check'):
+ os.system('bash setup_check.sh')
+else:
+ pass
 
 def getFile():
   directory = input(Fore.MAGENTA+Style.BRIGHT+"Director(if it's a folder within the directory then type directoryName/folderName) >> "+Fore.WHITE)
