@@ -76,8 +76,13 @@ try:
   runtime_timer = CLIENT_RUNTIME
   _set_user_client(CREATE_CLIENT,runtime_timer)
 finally:
-  def json_data(dumping):
-    with open('client.json','w') as c_j:
-      json.dump(dumping,c_j,indent=2,sort_keys=True)
-    return "Status upgrade with info in json files with exit status",1078
-  json_data(CLIENT)
+  # For the fact that the .json file stores very simple data that doesn't change
+  # we will make it to where it uploades once
+  if not os.path.exists('/data/data/com.termux/files/home/sLang/client.json')
+    def json_data(dumping):
+      with open('client.json','w') as c_j:
+        json.dump(dumping,c_j,indent=2,sort_keys=True)
+      return "Status upgrade with info in json files with exit status",1078
+    json_data(CLIENT)
+  if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
+    pass
