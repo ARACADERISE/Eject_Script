@@ -1,9 +1,10 @@
-from setuptools import setup
+from distutils.core import setup
 
-
-setup(
-      name="sLang",
-      version="1.0",
-      packages=["sLang"],
-      python_requires='!=3.5*, !=3.6*, !=3.7*'
-)
+setup(name='LangS',
+      version='1.0',
+      description='Simple Scripting langauge. Lazy written form of Shell Script',
+      author='ARACADERISE/GetStuffDone',
+      author_email='',
+      url='',
+      packages=['sLang'],
+     )
