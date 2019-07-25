@@ -1,5 +1,4 @@
 cd
-sh ./check
 case "$1" in
   -file)
     echo "File"
