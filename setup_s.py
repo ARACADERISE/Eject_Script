@@ -13,6 +13,7 @@ def reader(file_name):
     # Will read the file
     open_file = open(file_name,r)
     print(open_file.read())
+    os.system(f'check -file')
     open_file.close()
   else:
     # If it isn't a .s file we will raise a exception
