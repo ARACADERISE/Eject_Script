@@ -1,5 +1,7 @@
 # This will open the .s file
 
+python setup_s.py
+
 case "$1" in
   -file)
     cd
