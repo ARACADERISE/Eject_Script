@@ -5,6 +5,8 @@
   * This will also format the color of the comment(white)
 """
 
+import os
+
 def comment(directory,file_name):
   cmd = f"""
   cd
