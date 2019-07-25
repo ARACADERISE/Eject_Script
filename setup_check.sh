@@ -1,6 +1,7 @@
 # Setups check
 
 if [ ! -d /data/data/com.termux/files/usr/bin/check ]; then
+  sh ./check
   mv -v check /data/data/com.termux/files/usr/bin
   chmod +x /data/data/com.termux/files/usr/bin/check
   echo "==> Type 'check' to enable your .s file"
