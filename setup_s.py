@@ -21,3 +21,4 @@ def reader():
   else:
     # If it isn't a .s file we will raise a exception
     raise Exception(f"The file you wanted to open isn't a .s file. {Fore.YELLOW}Aborting..")
+reader()
