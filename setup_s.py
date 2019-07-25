@@ -10,10 +10,11 @@ from colorama import Fore, Style
 
 os.system('bash setup_check.sh')
 
-def reader(file_name):
-  if '.s' in file_name:
+def reader():
+ folder = input(Fore.MAGENTA+'.s File Name(with .s) >> ')
+  if '.s' in folder:
     # Will read the file
-    open_file = open(file_name,r)
+    open_file = open(folder,r)
     print(open_file.read())
     os.system(f'check -file')
     open_file.close()
