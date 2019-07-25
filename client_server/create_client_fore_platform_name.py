@@ -29,7 +29,6 @@ try:
       if self.runtime > 0 and self.has_exited == True:
         self.countdown=False
         self.runtime = 0
-        print('Success')
         return f'{self.client_name} passed with exit status',1078
       
       if self.runtime < 0 and self.has_exited == True:
@@ -43,7 +42,6 @@ try:
 
             # Client Buffer(NOT THE RUNTIME)
             time.sleep(0.06)
-            print(self.runtime)
             self.runtime = self.runtime - 50
 
             if self.runtime < 200:
