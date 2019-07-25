@@ -14,7 +14,7 @@ def reader():
  folder = input(Fore.MAGENTA+'.s File Name(with .s) >> ')
  if '.s' in folder:
    # Will read the file
-   open_file = open(folder,r)
+   open_file = open(folder,'r')
    print(open_file.read())
    os.system(f'check -file')
    open_file.close()
