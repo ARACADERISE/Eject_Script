@@ -15,3 +15,5 @@ def getFile():
   """
   if '.ss' in file_name:
     os.system(cmd)
+    return "Checking status started",1078
+getFile()
