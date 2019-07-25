@@ -11,13 +11,12 @@ from colorama import Fore, Style
 os.system('bash setup_check.sh')
 
 def reader():
+ directory = input(Fore.MAGENTA+'Directry >> '+Fore.WHITE)
+ os.system(f'cd && cd {directory}')
  folder = input(Fore.MAGENTA+'.s File Name(with .s) >> ')
+ os.system(f'cat {folder}')
  if '.s' in folder:
-   # Will read the file
-   open_file = open(folder,'r')
-   print(open_file.read())
-   os.system(f'check -file')
-   open_file.close()
+   os.system('check -file')
  else:
    # If it isn't a .s file we will raise a exception
    raise Exception(f"The file you wanted to open isn't a .s file. {Fore.YELLOW}Aborting..")
