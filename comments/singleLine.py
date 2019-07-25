@@ -17,9 +17,12 @@ def comment(directory,file_name):
 
   op = open(file_name,'r')
   if '#' in op.read():
-    print('Yes')
+    print(Fore.WHITE)
     op.close()
     
   else:
-    print('No')
+   return "No returned status",1078
     op.close()
+   
+  # RESETTING ALL COLORS
+  print(Style.RESET_ALL)
