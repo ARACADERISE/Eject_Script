@@ -6,6 +6,7 @@
 """
 
 import os, time
+from comments.singleLine import comment
 from colorama import Fore, Style
 
 os.system('bash setup_check.sh')
@@ -19,6 +20,7 @@ def getFile():
   cat {file_name}
   """
   if '.ss' in file_name:
+    comment(directory,file_name)
     # We want a line spacing
     print('\n')
     os.system('echo " ~~~FILE INFORMATION~~~"')
