@@ -1,1 +1,1 @@
-
+from file import *
