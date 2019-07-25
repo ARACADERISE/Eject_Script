@@ -1,7 +1,0 @@
-# This will open the .s file
-
-case "$1" in
-  -file)
-    bash get_file.sh
-  ;;
-esac
