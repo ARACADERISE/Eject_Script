@@ -1,7 +1,5 @@
 # This will open the .s file
 
-python sLang.py
-
 case "$1" in
   -file)
     cd
