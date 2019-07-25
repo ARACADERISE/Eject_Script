@@ -15,9 +15,14 @@ def getFile():
   cmd = f"""
   cd
   cd {directory}
+  clear
   cat {file_name}
   """
   if '.ss' in file_name:
+    # We want a line spacing
+    print('\n')
+    os.system('echo " ~~~FILE INFORMATION~~~"')
     os.system(cmd)
+    print('\n')
     return "Checking status started",1078
 getFile()
