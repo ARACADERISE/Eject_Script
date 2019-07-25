@@ -12,11 +12,14 @@ def comment(directory,file_name):
   cd
   cd {directory}
   """
+  
   os.system(cmd)
+
   op = open(file_name,'r')
   if '#' in op.read():
     print('Yes')
     op.close()
+    
   else:
     print('No')
     op.close()
