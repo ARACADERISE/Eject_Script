@@ -1,1 +1,17 @@
+# This will open the .s file
 
+case "$1" in
+  -file)
+    cd
+    read -p "Director(NOTE: if it's a folder within the directory then directory/folderName) >> " dir_name
+    cd $dir_name
+    ls
+    read -p ".s File >> " dot_s_file
+    if [ '.s' in $dot_s_file ]
+    then
+      cat $dot_s_file
+    else
+      echo "error. not .s file"
+    fi
+  ;;
+esac
