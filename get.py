@@ -5,6 +5,10 @@
   * Then will ask for the .ss filename
 """
 
+import os
+
+os.system('bash setup_check.sh')
+
 def getFile():
   directory = input("Director(if it's a folder within the directory then type directoryName/folderName) >> ")
   file_name = input(".ss FileName >> ")
