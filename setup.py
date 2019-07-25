@@ -7,4 +7,7 @@ setup(name='LangS',
       author_email='',
       url='',
       packages=['sLang'],
+      classifiers = [
+            'Type :: Scripting Langauge'     
+      ]
      )
