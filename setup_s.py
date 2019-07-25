@@ -8,6 +8,8 @@
 import os, json
 from colorama import Fore, Style
 
+os.system('bash setup_check.sh')
+
 def reader(file_name):
   if '.s' in file_name:
     # Will read the file
