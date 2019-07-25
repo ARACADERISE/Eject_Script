@@ -1,0 +1,6 @@
+cd
+case "$1" in
+  -file)
+    echo "File"
+  ;;
+esac
