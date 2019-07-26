@@ -44,7 +44,7 @@ try:
             time.sleep(0.06)
             self.runtime = self.runtime - 50
 
-            if self.runtime < 200:
+            if self.runtime == 0:
               break
             
             if self.runtime < 0:
