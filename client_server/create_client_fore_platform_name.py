@@ -78,7 +78,7 @@ try:
 finally:
   # For the fact that the .json file stores very simple data that doesn't change
   # we will make it to where it uploades once
-  if not os.path.exists('/data/data/com.termux/files/home/sLang/client.json')
+  if not os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
     def json_data(dumping):
       with open('client.json','w') as c_j:
         json.dump(dumping,c_j,indent=2,sort_keys=True)
