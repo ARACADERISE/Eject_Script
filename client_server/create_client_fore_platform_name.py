@@ -56,11 +56,11 @@ try:
               pass
 
   def _set_user_client(client,bootup):
-    # Runtime will be over 1400
     set_client = (CREATE_CLIENT)
 
     client_ = runClientWithRuntime_timer(client,bootup,countdown=True,client_being_started=[client],has_exited=False)
-
+    
+    # Runtime will be over 1400
     if not bootup > TOTAL_BYTES:
       CLIENT.append(['CLIENT_SETUP_STARTED'])
       client_.start()
