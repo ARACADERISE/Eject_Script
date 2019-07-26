@@ -58,15 +58,18 @@ try:
   def _set_user_client(client,bootup):
     # Runtime will be over 1400
     set_client = (CREATE_CLIENT)
+
     client_ = runClientWithRuntime_timer(client,bootup,countdown=True,client_being_started=[client],has_exited=False)
-    if not len(client) > TOTAL_BYTES:
+
+    if not bootup > TOTAL_BYTES:
       CLIENT.append(['CLIENT_SETUP_STARTED'])
       client_.start()
       CLIENT.append([{'USER_CLIENT':client}])
       client_.end()
       CLIENT.append(['CLIENT_SETUP_ENDED'])
       return client
-    if len(client) > TOTAL_BYTES:
+
+    if bootup > TOTAL_BYTES:
       raise OverflowError('Error: Client got too long. Byte overflow error')
     
   CLIENT_BOOTUP = len(CREATE_CLIENT)*38
