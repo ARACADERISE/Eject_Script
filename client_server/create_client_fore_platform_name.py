@@ -13,8 +13,8 @@ try:
   class runClientWithRuntime_timer:
     
     # countdown False by default
-    def __init__(self, client_name, runtime, countdown=bool(False), client_being_started=[object], has_exited=bool):
-      self.runtime = TOTAL_BYTES / 6 * 3
+    def __init__(self, client_name, bootup_time, countdown=bool(False), client_being_started=[object], has_exited=bool):
+      self.bootup = bootup_time
       self.countdown = bool(countdown)
       self.start_client = [client_being_started]
       self.has_exited= bool(has_exited)
@@ -26,28 +26,28 @@ try:
       # there is no other way to change the value
       self.has_exited = True
 
-      if self.runtime > 0 and self.has_exited == True:
+      if self.bootup > 0 and self.has_exited == True:
         self.countdown=False
-        self.runtime = 0
+        self.bootup = 0
         return f'{self.client_name} passed with exit status',1078
       
-      if self.runtime < 0 and self.has_exited == True:
+      if self.bootup < 0 and self.has_exited == True:
         raise OverflowError("Error. The client went over available bytes of data")
         return "Exit success, client fail @ over-draw-of-bye-data with exit status",1078
       
     def start(self):
-      if self.runtime == self.runtime:
+      if self.bootup == self.bootup:
         if self.countdown == True:
-          while self.runtime > 0 and self.countdown and not self.has_exited:
+          while self.bootup > 0 and self.countdown and not self.has_exited:
 
             # Client Buffer(NOT THE RUNTIME)
             time.sleep(0.06)
-            self.runtime = self.runtime - 50
+            self.bootup = self.bootup - 50
 
-            if self.runtime == 0:
+            if self.bootup == 0:
               break
             
-            if self.runtime < 0:
+            if self.bootup < 0:
               raise RuntimeError('Runtime of client ran out. Runtime error @ line ')
               return "Program crash at runtimeerror with exit status",1078
 
@@ -55,10 +55,10 @@ try:
             else:
               pass
 
-  def _set_user_client(client,runtime):
+  def _set_user_client(client,bootup):
     # Runtime will be over 1400
     set_client = (CREATE_CLIENT)
-    client_ = runClientWithRuntime_timer(client,runtime,countdown=True,client_being_started=[client],has_exited=False)
+    client_ = runClientWithRuntime_timer(client,bootup,countdown=True,client_being_started=[client],has_exited=False)
     if not len(client) > TOTAL_BYTES:
       CLIENT.append(['CLIENT_SETUP_STARTED'])
       client_.start()
@@ -70,8 +70,8 @@ try:
       raise OverflowError('Error: Client got too long. Byte overflow error')
     
   CLIENT_RUNTIME = len(CREATE_CLIENT)*38
-  runtime_timer = CLIENT_RUNTIME
-  _set_user_client(CREATE_CLIENT,runtime_timer)
+  bootup_timer = CLIENT_RUNTIME
+  _set_user_client(CREATE_CLIENT,bootup_timer)
 finally:
   # For the fact that the .json file stores very simple data that doesn't change
   # we will make it to where it uploades once
