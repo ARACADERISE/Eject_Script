@@ -9,7 +9,7 @@ CREATE_CLIENT = f'a01\\{NAME}-|-{os.name}.{sys.platform}[{os.getgid()}--.{os.get
 TOTAL_BYTES = 5000
 CLIENT = []
 try:
-  # this will "run" the client for a runtime
+  # this will "run" the client for a bootup
   class runClientWithRuntime_timer:
     
     # countdown False by default
@@ -69,8 +69,8 @@ try:
     if len(client) > TOTAL_BYTES:
       raise OverflowError('Error: Client got too long. Byte overflow error')
     
-  CLIENT_RUNTIME = len(CREATE_CLIENT)*38
-  bootup_timer = CLIENT_RUNTIME
+  CLIENT_BOOTUP = len(CREATE_CLIENT)*38
+  bootup_timer = CLIENT_BOOTUP
   _set_user_client(CREATE_CLIENT,bootup_timer)
 finally:
   # For the fact that the .json file stores very simple data that doesn't change
