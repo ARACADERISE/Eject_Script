@@ -14,7 +14,7 @@ try:
     
     # countdown False by default
     def __init__(self, client_name, runtime, countdown=bool(False), client_being_started=[object], has_exited=bool):
-      self.runtime = TOTAL_BYTES
+      self.runtime = TOTAL_BYTES / 6 * 3
       self.countdown = bool(countdown)
       self.start_client = [client_being_started]
       self.has_exited= bool(has_exited)
@@ -50,9 +50,6 @@ try:
             if self.runtime < 0:
               raise RuntimeError('Runtime of client ran out. Runtime error @ line ')
               return "Program crash at runtimeerror with exit status",1078
-            
-            if self.runtime == 0:
-              self.runtime = TOTAL_BYTES / 6 * 3
 
             # if it is still greater than 2 we will pass
             else:
