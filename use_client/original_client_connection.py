@@ -29,7 +29,12 @@ signal_types = [
   "loi"
 ]
 
-now_recieve = open('client.json'
+# Implementing into the client.json what signals it will now recieve
+now_recieve = open('client.json','w')
+recieve_from = {'RECIEVING_REQUESTS_FROM_SIGNAL_TYPES':['cco','bo1','a01','ct4','phh','http','https','rgbyt','loi']}
+recieving_from = json.dumps(recieve_from,indent=2,sort_keys=True)
+now_recieve.write(recieving_from)
+now_recieve.close()
 
 # THIS WILL HOPEFULLY BE THE RENDER TEMPLATE TO BE USED IN EVERY OTHER FILE
 # WRITING TO client.json
@@ -62,7 +67,9 @@ if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
   # ORIGINAL STATUS TO client.json
   # WILL BE UPDATED
   GET_CONNECTION = open('client.json','w')
-  send_data = {'CONNECTION_01':file_being_connected}
+  # Since this file is the file that will always write into client.json this is going to be the original client.json
+  # connection
+  send_data = {'OFFICIAL_CONNECTION':file_being_connected}
   data = json.dumps(send_data,indent=2,sort_keys=True)
   GET_CONNECTION.write(data)
   GET_CONNECTION.close()
