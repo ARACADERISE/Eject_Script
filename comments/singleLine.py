@@ -19,10 +19,11 @@ def comment(directory,file_name):
   if '#' in op.read():
     print(Fore.WHITE)
     op.close()
+    return "Returned with status",1078
     
   else:
    return "No returned status",1078
-    op.close()
+   op.close()
    
   # RESETTING ALL COLORS
   print(Style.RESET_ALL)
