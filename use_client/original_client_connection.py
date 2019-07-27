@@ -5,6 +5,9 @@ import json, os
 TYPE = 'Connection With Json'
 file_being_connected = 'connect.py'
 signal_types = [
+  # THIS IS ONLY USED ONCES
+  # Used to send a request to send signals and data to the client.json file
+  "cco",
   # bo1: To send but not receive
   "bo1",
   # a01: To recieve from a previous request but not send
@@ -26,22 +29,35 @@ signal_types = [
   "loi"
 ]
 
+now_recieve = open('client.json'
+
 # THIS WILL HOPEFULLY BE THE RENDER TEMPLATE TO BE USED IN EVERY OTHER FILE
 # WRITING TO client.json
 class data_to_send_through_file:
-  def __init__(self,signal,connection_name,connection_file,send_Req,get_Req,pull_Req,recieve_Req):
-    self.con_name = connection_name
-    self.con_file = connection_file
-    self.signal = signal
-    self.send_req = send_Req
-    self.get_req = get_Req
-    self.pull_req = pull_Req
-    self.rec_req = recieve_Req
-  def __requests_to_file__(self):
-    OPEN_CLIENT_FILE = open('client.json','w')
+  def __init__(self,port):
+    self.port = port
+    self.send_req = ""
+    self.get_req = ""
+    self.store_req = ""
+    self.appended_file = ""
+    self.signal_to_recieve_from = ""
+  
+  # THIS WILL ONLY USE ONE TYPE OF SIGNAL, SO WE HARD CODED WHAT SIGNAL IT'S USING
+  def __requests_to_file__(self,file_being_appended):
+    self.appeneded_file = file_being_appended
+                   
+    OPEN_CLIENT_FILE_READ = open('client.json','r')
+    OPEN_CLIENT_FILE_WRITE = open('client.json','w')
+                   
     if self.signal in signal_types:
-      
-
+      self.send_req = signal_types[0]
+                   
+      if signal_type[0] in OPEN_CLIENT_FILE_READ.read() and self.send_req == signal_types[0]:
+        send_data = {'new_connection_status': ['requestsGET','requestSEND','requestSTORE'], 'file_appended_to_connection_requests': self.appended_file}
+        data_to_send = json.dumps(send_data,indent=2,sort_keys=True)
+        OPEN_CLIENT_FILE_WRITE.write(data_to_send)
+        OPEN_CLIENT_FILE_WRITE.close()
+        
 if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
   # ORIGINAL STATUS TO client.json
   # WILL BE UPDATED
