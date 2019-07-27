@@ -45,17 +45,22 @@ class data_to_send_through_file:
     self.get_req = ""
     self.store_req = ""
     self.appended_file = ""
-    self.signal_to_recieve_from = ""
+    self.signal = ""
   
   # THIS WILL ONLY USE ONE TYPE OF SIGNAL, SO WE HARD CODED WHAT SIGNAL IT'S USING
   def __requests_to_file__(self,file_being_appended):
     self.appeneded_file = file_being_appended
+    # Hard coded signal
+    # Usually it will be assigned to the functions argument but if the user
+    # decides to make another file(for whatever benifit) we need to make sure they don't have to type in the signal to
+    # create a new files connection to and with client.json
+    self.signal = 'cco'
                    
     OPEN_CLIENT_FILE_READ = open('client.json','r')
     OPEN_CLIENT_FILE_WRITE = open('client.json','w')
                    
     if self.signal in signal_types:
-      self.send_req = signal_types[0]
+      self.send_req = self.signal
                    
       if signal_type[0] in OPEN_CLIENT_FILE_READ.read() and self.send_req == signal_types[0]:
         send_data = {'new_connection_status': ['requestsGET','requestSEND','requestSTORE'], 'file_appended_to_connection_requests': self.appended_file}
