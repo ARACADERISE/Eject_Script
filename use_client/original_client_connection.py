@@ -42,10 +42,13 @@ class data_to_send_through_file:
   def __init__(self,port):
     self.port = port
     self.send_req = ""
-    self.get_req = ""
-    self.store_req = ""
+    self.get_resp = bool
+    self.store_req = bool
     self.appended_file = ""
     self.signal = ""
+    self.store_data_being_transfered = ""
+    self.opened_file_write = open('client.json','w')
+    self.opened_file_read = open('client.json','r')
   
   # THIS WILL ONLY USE ONE TYPE OF SIGNAL, SO WE HARD CODED WHAT SIGNAL IT'S USING
   def __requests_to_file__(self,file_being_appended):
@@ -67,6 +70,38 @@ class data_to_send_through_file:
         data_to_send = json.dumps(send_data,indent=2,sort_keys=True)
         OPEN_CLIENT_FILE_WRITE.write(data_to_send)
         OPEN_CLIENT_FILE_WRITE.close()
+  # set to use_of_client by default
+  def __use__signal__(self,signal_name,request='use_of_client',get_request=bool(False),store_req=bool(True),used_for_data={}):
+    if signal_name in signal_types:
+      self.signal = signal_name
+      self.send_req = request
+      self.get_resp = get_request
+      self.store_req = store_req
+      
+      if self.send_req:
+        self.store_data_being_transfered = used_for_data
+        if self.get_resp:
+          transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+          sef.opened_file_write.write(transfer_to_json)
+          if self.store_data_being_transfered in self.openend_file_read.read():
+            self.opened_file_write.close()
+            return "Data sent..{}. Data recieved {}".format(self.store_data_being_transfered,"client_got_data")
+          else:
+            self.opened_file_write.close()
+            return "Data sent..{}".format(self.store_data_being_transfered)
+        else:
+          transfer_to_json = json.dumps(self.data_being_transfered,indent=2,sort_keys=True)
+          self.opened_file_write.write(transfer_to_json)
+          if self.store_data_being_transfered in self.opened_file_read.read():
+            self.opened_file_write.close()
+          else:
+            self.opened_file_write.close()
+      else:
+        self.store_data_being_transfered = [{'status':'no data','used_for':'get_signal'}]
+        transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+        self.opened_file_write.write(transfer_to_json)
+        self.opened_file_write.close()
+          
         
 if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
   # ORIGINAL STATUS TO client.json
