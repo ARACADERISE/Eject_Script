@@ -1,4 +1,5 @@
 import os,sys,json,time
+from use_client.original_client_connection import data_to_send_through_file
 
 # simple easy script to create a client for the user
 # will be used to most likely help read and format the .ss file
@@ -7,6 +8,7 @@ import os,sys,json,time
 NAME = 'user-cli'
 CREATE_CLIENT = f'a01\\{NAME}-|-{os.name}.{sys.platform}[{os.getgid()}--.{os.getegid()}]|noll_nom_om/|\='
 TOTAL_BYTES = 5000
+DATABASE_SIGNAL_CONNECTIONS = ['cco','bo1','a01','ct4','phh','http','https','rgbyt','loi']
 CLIENT = []
 try:
   # this will "run" the client for a bootup
@@ -15,6 +17,7 @@ try:
     # countdown False by default
     def __init__(self, client_name, bootup_time, countdown=bool(False), client_being_started=[object], has_exited=bool):
       self.bootup = bootup_time
+      self.set_port = '18080'
       self.countdown = bool(countdown)
       self.start_client = [client_being_started]
       self.has_exited= bool(has_exited)
@@ -64,7 +67,7 @@ try:
     if not bootup > TOTAL_BYTES:
       CLIENT.append(['CLIENT_SETUP_STARTED'])
       client_.start()
-      CLIENT.append([{'USER_CLIENT':client}])
+      CLIENT.append([{'USER_CLIENT':client,'port_open_to_signals':DATABASE_SIGNAL_CONNECTIONS}])
       client_.end()
       CLIENT.append(['CLIENT_SETUP_ENDED'])
       return client
