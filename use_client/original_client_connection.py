@@ -84,7 +84,7 @@ class data_to_send_through_file:
                    
     if self.signal in signal_types:
       self.send_req = self.signal
-                   
+      self.opened_file_write             
       if signal_type[0] in OPEN_CLIENT_FILE_READ.read() and self.send_req == signal_types[0]:
         send_data = {'new_connection_status': ['requestsGET','requestSEND','requestSTORE'], 'file_appended_to_connection_requests': self.appended_file}
         data_to_send = json.dumps(send_data,indent=2,sort_keys=True)
@@ -104,6 +104,10 @@ class data_to_send_through_file:
         self.signal = signal_type[1]
         if request in signal_types_requests[signal_name]:
           self.send_req = request
+          self.store_data_being_transfered = used_for_data
+          to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+          self.opened_file_write.write(to_json)
+          self.opened_file_write.close()
         else:
           raise Exception('Error: Unable to locate that signals request type')
         # If it is True it will be changes else it will stay
