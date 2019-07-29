@@ -39,8 +39,12 @@ signal_type_request = {
   'a01': ['recieve_from'], # 2
   'ct4': ['send_to_port'], # 3
   'phh': ['start_mini_port_signal','adapt_with_client'], # 4
+  
+  # PLEASE TAKE NOTE: link_request_data isn't the request you type in!
+  # You type in the link and the signal type will take in the request and get requests from the link
   'http': ['link_request_data'], # 5
   'https': ['link_request_data'], # 6
+  
   'rgbyt': ['bytes_to_client'], # 7
   'loi': ['ignore'] # 8
 }
