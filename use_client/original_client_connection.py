@@ -29,6 +29,22 @@ signal_types = [
   "loi"
 ]
 
+# HARD CODING WHAT EACH SIGNALS REQUESTS ARE
+# The key values as to what the signals request is is stated in the square brackets
+# so if we want a signal of bo1, the request would equal to send_data
+signal_type_request = {
+  # LEFT EMPTY DUE TO THE FACT IT ISN'T USED ANYWHERE BUT ONE FUNCTION
+  'cco': [], # 0
+  'bo1': ['send_data'], # 1
+  'a01': ['recieve_from'], # 2
+  'ct4': ['send_to_port'], # 3
+  'phh': ['start_mini_port_signal','adapt_with_client'], # 4
+  'http': ['link_request_data'], # 5
+  'https': ['link_request_data'], # 6
+  'rgbyt': ['bytes_to_client'], # 7
+  'loi': ['ignore'] # 8
+}
+
 # Implementing into the client.json what signals it will now recieve
 now_recieve = open('client.json','w')
 recieve_from = {'RECIEVING_REQUESTS_FROM_SIGNAL_TYPES':['cco','bo1','a01','ct4','phh','http','https','rgbyt','loi']}
@@ -71,11 +87,31 @@ class data_to_send_through_file:
         OPEN_CLIENT_FILE_WRITE.write(data_to_send)
         OPEN_CLIENT_FILE_WRITE.close()
   # set to use_of_client by default
-  def __use__signal__(self,signal_name,request='use_of_client',get_request=bool(False),store_req=bool(True),used_for_data={}):
+  # EXAMPLE USE: lets say we assigned the name f to data_to_send_through_file
+  # then we would do
+  # f.__use__signal__('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
+  def __use__signal__(self,signal_name,request='use_of_client',get_response=bool(False),store_req=bool(False),used_for_data={}):
     if signal_name in signal_types:
+      if signal_name == signal_types[0]:
+        raise Exception('Error. The signal cco is not available')
+        return "Exit with error and exit status of ",1078
+      
+      if signal_name == signal_types[1]:
+        self.signal = signal_type[1]
+        if request in signal_types_requests[signal_name]:
+          self.send_req = request
+        else:
+          raise ModuleNotFoundError('Error: Unable to locate that signals request type')
+        # If it is True it will be changes else it will stay
+        if get_response == True:
+          get_response = False
+          self.get_resp = get_response
+        else:
+          self.get_resp = get_response
+        
       self.signal = signal_name
       self.send_req = request
-      self.get_resp = get_request
+      self.get_resp = get_response
       self.store_req = store_req
       
       if self.send_req:
