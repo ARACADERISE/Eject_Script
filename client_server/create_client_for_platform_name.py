@@ -57,7 +57,8 @@ try:
             # if it is still greater than 2 we will pass
             else:
               pass
-
+      get_requests = data_to_send_through_file(self.set_port)
+      get_requests.__requests_to_file__('client_server/create_client_for_platform_name.py')
   def _set_user_client(client,bootup):
     set_client = (CREATE_CLIENT)
 
