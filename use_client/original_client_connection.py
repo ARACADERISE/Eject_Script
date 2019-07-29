@@ -105,7 +105,7 @@ class data_to_send_through_file:
         if request in signal_types_requests[signal_name]:
           self.send_req = request
         else:
-          raise ModuleNotFoundError('Error: Unable to locate that signals request type')
+          raise Exception('Error: Unable to locate that signals request type')
         # If it is True it will be changes else it will stay
         if get_response == True:
           get_response = False
