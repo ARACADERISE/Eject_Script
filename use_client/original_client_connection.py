@@ -1,6 +1,6 @@
 # Connection to any json files throughout the project
 
-import json, os
+import json, os, sys
 
 TYPE = 'Connection With Json'
 file_being_connected = 'connect.py'
@@ -116,6 +116,10 @@ class data_to_send_through_file:
           self.get_resp = get_response
         else:
           self.get_resp = get_response
+      if signal_nal == signal_type[2]:
+        self.signal = signal_type[2]
+        if request in signal_types_request[signal_name]:
+          pass
         
       self.signal = signal_name
       self.send_req = request
