@@ -120,7 +120,7 @@ class data_to_send_through_file:
         if request in signal_types_requests[signal_name]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
-          self.last_signal_used.appened({f'{signal_type[-1]}':f'{self.store_data_being_used}'})
+          self.last_signal_used.appened({f'{signal_types[-1]}':f'{self.store_data_being_used}'})
           write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
           self.opened_file_write.write(write_to_json)
           self.opened_file_write.close()
@@ -142,7 +142,7 @@ class data_to_send_through_file:
         if request in signal_types_requests[signal_name]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
-          self.last_signal_used.append({f'{signal_type[1]}':f'{self.store_data_being_transfered}'})
+          self.last_signal_used.append({f'{signal_types[1]}':f'{self.store_data_being_transfered}'})
           to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
           self.opened_file_write.write(to_json)
           self.opened_file_write.close()
@@ -168,7 +168,7 @@ class data_to_send_through_file:
           self.send_req = request
           if not used_for_data == {}:
             self.store_data_being_transfered = used_data_for
-            self.last_signal_used.append({f'{signal_type[2]}':f'{self.store_data_being_transfered}'})
+            self.last_signal_used.append({f'{signal_types[2]}':f'{self.store_data_being_transfered}'})
             write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
@@ -180,19 +180,42 @@ class data_to_send_through_file:
           if self.get_resp == False:
             self.get_resp = True
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_types[-1]}']}"])
               print(self.req_resp)
               return self.req_resp
           else:
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_types[-1]}']}"])
               print(self.req_resp)
               return self.req_resp
           if self.store_req == True:
             self.store_req = False
           else:
             pass
-        
+      if signal_name == signal_types[3]:
+       self.signal = signal_types[3]
+       self.get_resp = get_response
+       self.store_req = store_req
+       if request in signal_types_requests[signal_name]:
+        self.send_request = request
+        self.store_data_being_transfered = used_data_for
+        self.last_signal_used_for.appened({f'{signal_types[3]}':f"{self.store_data_being_transfered}'"})
+        write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+        self.opened_file_write.write(write_to_json)
+        self.opened_file_write.close()
+        if self.get_resp == True:
+          self.req_resp.append(f"{self.last_signal_used[f'{signal_types[3]}']}"])
+          print(self.req_resp)
+          return self.req_resp
+        else:
+          pass
+        if self.store_req == True:
+          self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[3]}']}")
+          print(self.req_stored_data)
+          return self.req_stored_data
+        else:
+          pass
+          
       self.signal = signal_name
       self.send_req = request
       self.get_resp = get_response
