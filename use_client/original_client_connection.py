@@ -180,10 +180,14 @@ class data_to_send_through_file:
           if self.get_resp == False:
             self.get_resp = True
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[2]}']}"])
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+              print(self.req_resp)
+              return self.req_resp
           else:
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[2]}']}"])
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+              print(self.req_resp)
+              return self.req_resp
           if self.store_req == True:
             self.store_req = False
           else:
