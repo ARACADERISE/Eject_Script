@@ -10,7 +10,7 @@ signal_types = [
   "cco",
   # bo1: To send but not receive
   "bo1",
-  # a01: To recieve from a previous request but not send
+  # a01: To recieve but not to send
   # Exampled: If I were to use ct4, it would just send a signal request. But what if I want to recieve the data?
   # Use a01 and the connection name
   # Example: useConnection(a01,for_con="CONNECTION_01")
@@ -26,7 +26,8 @@ signal_types = [
   # rgbyt: Sends mini bytes to port to support client when both recieving, getting, pulling, and storing request
   "rgbyt",
   # loi: a lazy way of of telling the client to ignore a specific get request
-  "loi"
+  "loi",
+  "default"
 ]
 
 # HARD CODING WHAT EACH SIGNALS REQUESTS ARE
@@ -46,7 +47,8 @@ signal_type_request = {
   'https': ['link_request_data'], # 6
   
   'rgbyt': ['bytes_to_client'], # 7
-  'loi': ['ignore'] # 8
+  'loi': ['ignore'], # 8
+  'default': ['use_of_client'] # 9
 }
 
 # Implementing into the client.json what signals it will now recieve
@@ -64,8 +66,11 @@ class data_to_send_through_file:
     self.send_req = ""
     self.get_resp = bool
     self.store_req = bool
+    self.req_resp = []
+    self.req_stored_data = []
     self.appended_file = ""
     self.signal = ""
+    self.last_signal_used = []
     self.store_data_being_transfered = ""
     self.opened_file_write = open('client.json','w')
     self.opened_file_read = open('client.json','r')
@@ -94,17 +99,42 @@ class data_to_send_through_file:
   # EXAMPLE USE: lets say we assigned the name f to data_to_send_through_file
   # then we would do
   # f.__use__signal__('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
-  def __use__signal__(self,signal_name,request='use_of_client',get_response=bool(False),store_req=bool(False),used_for_data={}):
+  def __use__signal__(self,signal_name="default",request='use_of_client',get_response=bool(False),store_req=bool(False),used_for_data={f'signal_{signal_name}':None}):
     if signal_name in signal_types:
       if signal_name == signal_types[0]:
         raise Exception('Error. The signal cco is not available')
         return "Exit with error and exit status of ",1078
       
-      if signal_name == signal_types[1]:
-        self.signal = signal_type[1]
+      if signal_name == signal_types[-1]:
+        self.signal = signal_types[-1]
+        self.store_req = store_req
+        self.get_resp = get_response
         if request in signal_types_requests[signal_name]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
+          self.last_signal_used.appened({f'{signal_type[-1]}':f'{self.store_data_being_used}'})
+          write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+          self.opened_file_write.write(write_to_json)
+          self.opened_file_write.close()
+        if self.get_resp == True:
+          self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+          print(self.req_resp)
+          return self.req_resp
+        else:
+          pass
+        if self.store_req == True:
+          self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[-1]}']}")
+          print(self.req_stored_data)
+          return self.req_stored_data
+        else:
+          pass
+          
+      if signal_name == signal_types[1]:
+        self.signal = signal_types[1]
+        if request in signal_types_requests[signal_name]:
+          self.send_req = request
+          self.store_data_being_transfered = used_for_data
+          self.last_signal_used.append({f'{signal_type[1]}':f'{self.store_data_being_transfered}'})
           to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
           self.opened_file_write.write(to_json)
           self.opened_file_write.close()
@@ -116,10 +146,40 @@ class data_to_send_through_file:
           self.get_resp = get_response
         else:
           self.get_resp = get_response
-      if signal_nal == signal_type[2]:
+        if store_req == True:
+          store_req = False
+          self.store_req = store_req
+        else:
+          self.store_req = store_req
+          
+      if signal_name == signal_type[2]:
         self.signal = signal_type[2]
+        self.get_resp = get_response
+        self.store_req = store_req
         if request in signal_types_request[signal_name]:
-          pass
+          self.send_req = request
+          if not used_for_data == {}:
+            self.store_data_being_transfered = used_data_for
+            self.last_signal_used.append({f'{signal_type[2]}':f'{self.store_data_being_transfered}'})
+            write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+            self.opened_file_write.write(write_to_json)
+            self.opened_file_write.close()
+          if used_for_data == {}:
+            self.store_data_being_transfered = ['transfer_key_88yui']
+            write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+            self.opened_file_write.write(write_to_json)
+            self.opened_file_write.close()
+          if self.get_resp == False:
+            self.get_resp = True
+            if self.get_resp == True:
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[2]}']}"])
+          else:
+            if self.get_resp == True:
+              self.req_resp.append(f"{self.last_signal_used[f'{signal_type[2]}']}"])
+          if self.store_req == True:
+            self.store_req = False
+          else:
+            pass
         
       self.signal = signal_name
       self.send_req = request
