@@ -11,6 +11,7 @@
 import json, os, sys
 
 TYPE = 'Connection With Json'
+directory_to_connect_to = '/data/data/com.termux/files/home'
 file_being_connected = 'connect.py'
 signal_types = [
   # THIS IS ONLY USED ONCES
@@ -254,15 +255,17 @@ class data_to_send_through_file:
         self.opened_file_write.close()
           
         
-if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
-  # ORIGINAL STATUS TO client.json
-  # WILL BE UPDATED
-  GET_CONNECTION = open('client.json','w')
-  # Since this file is the file that will always write into client.json this is going to be the original client.json
-  # connection
-  send_data = {'OFFICIAL_CONNECTION':file_being_connected}
-  data = json.dumps(send_data,indent=2,sort_keys=True)
-  GET_CONNECTION.write(data)
-  GET_CONNECTION.close()
+if os.path.exists(f'{directory_to_connect_to}'):
+ prev = f'{directory_to_connect_to}/sLang'
+ if os.path.exists(f'{prev}/client.json'):
+   # ORIGINAL STATUS TO client.json
+   # WILL BE UPDATED
+   GET_CONNECTION = open('client.json','w')
+   # Since this file is the file that will always write into client.json this is going to be the original client.json
+   # connection
+   send_data = {'OFFICIAL_CONNECTION':file_being_connected}
+   data = json.dumps(send_data,indent=2,sort_keys=True)
+   GET_CONNECTION.write(data)
+   GET_CONNECTION.close()
 if not os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
   raise Exception('Cannot connect to client.json')
