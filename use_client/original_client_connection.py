@@ -119,7 +119,7 @@ class data_to_send_through_file:
         self.signal = signal_types[-1]
         self.store_req = store_req
         self.get_resp = get_response
-        if request in signal_types_requests[signal_name]:
+        if request in signal_type_request[signal_name]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
           self.last_signal_used.appened({f'{signal_types[-1]}':f'{self.store_data_being_used}'})
@@ -141,7 +141,7 @@ class data_to_send_through_file:
           
       if signal_name == signal_types[1]:
         self.signal = signal_types[1]
-        if request in signal_types_requests[signal_name]:
+        if request in signal_type_request[signal_name]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
           self.last_signal_used.append({f'{signal_types[1]}':f'{self.store_data_being_transfered}'})
@@ -166,7 +166,7 @@ class data_to_send_through_file:
         self.signal = signal_type[2]
         self.get_resp = get_response
         self.store_req = store_req
-        if request in signal_types_request[signal_name]:
+        if request in signal_type_request[signal_name]:
           self.send_req = request
           if not used_for_data == {}:
             self.store_data_being_transfered = used_data_for
@@ -198,7 +198,7 @@ class data_to_send_through_file:
        self.signal = signal_types[3]
        self.get_resp = get_response
        self.store_req = store_req
-       if request in signal_types_requests[signal_name]:
+       if request in signal_type_request[signal_name]:
         self.send_request = request
         self.store_data_being_transfered = used_data_for
         self.last_signal_used_for.appened({f'{signal_types[3]}':f"{self.store_data_being_transfered}'"})
@@ -227,7 +227,7 @@ class data_to_send_through_file:
         self.store_data_being_transfered = used_for_data
         if self.get_resp:
           transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
-          sef.opened_file_write.write(transfer_to_json)
+          self.opened_file_write.write(transfer_to_json)
           if self.store_data_being_transfered in self.openend_file_read.read():
             self.opened_file_write.close()
             return "Data sent..{}. Data recieved {}".format(self.store_data_being_transfered,"client_got_data")
