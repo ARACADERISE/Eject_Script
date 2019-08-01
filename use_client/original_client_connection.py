@@ -78,6 +78,7 @@ class data_to_send_through_file:
     self.store_req = bool
     self.req_resp = []
     self.req_stored_data = []
+    self.signal_request = []
     self.appended_file = ""
     self.signal = ""
     self.last_signal_used = []
@@ -194,29 +195,33 @@ class data_to_send_through_file:
             self.store_req = False
           else:
             pass
+           
       if signal_name == signal_types[3]:
        self.signal = signal_types[3]
        self.get_resp = get_response
        self.store_req = store_req
-       if request in signal_type_request[signal_name]:
-        self.send_request = request
-        self.store_data_being_transfered = used_data_for
-        self.last_signal_used_for.appened({f'{signal_types[3]}':f"{self.store_data_being_transfered}'"})
-        write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
-        self.opened_file_write.write(write_to_json)
-        self.opened_file_write.close()
-        if self.get_resp == True:
-          self.req_resp.append(f"{self.last_signal_used[f'{signal_types[3]}']}"])
-          print(self.req_resp)
-          return self.req_resp
-        else:
-          pass
-        if self.store_req == True:
-          self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[3]}']}")
-          print(self.req_stored_data)
-          return self.req_stored_data
-        else:
-          pass
+       if requests in signal_type_request[signal_name]:
+          print(signal_types)
+          signal_request_to_send = input("Type the signal >> ")
+          if signal_request_to_send in signal_types:
+            self.siganl = signal_types[signal_request_to_send]
+            self.signal_request = {f'{signal_request_to_send}':f'{signal_type_request[self.signal]}'}
+            self.store_data_being_transfered.appened(self.signal_request)
+            write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+            self.opened_file_write.write(write_to_json)
+            self.opened_file_write.close()
+          if self.get_resp == True:
+            self.req_resp.append(f"{self.last_signal_used[f'{signal_types[3]}']}"])
+            print(self.req_resp)
+            return self.req_resp
+          else:
+            pass
+          if self.store_req == True:
+            self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[3]}']}")
+            print(self.req_stored_data)
+            return self.req_stored_data
+          else:
+            pass
           
       self.signal = signal_name
       self.send_req = request
