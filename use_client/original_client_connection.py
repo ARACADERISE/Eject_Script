@@ -36,6 +36,7 @@ signal_types = [
   "rgbyt",
   # loi: a lazy way of of telling the client to ignore a specific get request
   "loi",
+  # This will be the default send-get-recieve request if no arguments are passed for signal_name and request
   "default"
 ]
 
