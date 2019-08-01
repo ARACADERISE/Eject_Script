@@ -21,7 +21,8 @@ signal_types = [
   # a01: To recieve but not to send
   # Exampled: If I were to use ct4, it would just send a signal request. But what if I want to recieve the data?
   # Use a01 and the connection name
-  # Example: useConnection(a01,for_con="CONNECTION_01")
+  # Example: useConnection(a01,request="recieve_from"), NOTE: I only did 2 arguments due to the fact I am
+  # showing you how you'd use the signal and the signals request
   "a01",
   # ct4: To send a signal request to the port
   "ct4",
