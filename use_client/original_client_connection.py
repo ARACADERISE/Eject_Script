@@ -76,6 +76,8 @@ class data_to_send_through_file:
     self.port = port
     self.send_req = ""
     self.get_resp = bool
+    # THIS WILL BE USEFULL FOR WHEN WE WANT THE PROGRAM TO OPEN AND GET THE REQUESTS FROM THE LINK
+    self.links_to_be_opened = []
     self.store_req = bool
     self.req_resp = []
     self.req_stored_data = []
@@ -252,7 +254,28 @@ class data_to_send_through_file:
           self.opened_file_write.write(write_to_json)
           self.opened_file_write.close()
       
-      # WE DO NOT WANT ANYTHING TO HAPPEN. It's a port not a client get-store-return value
+      if signal_name == signal_types[5]:
+        self.signal = signal_types[5]
+        self.get_resp = get_response
+        self.store_req = store_req
+        if not 'http' in request:
+          raise Exception('Error @ http')
+          return "Error @ {} with exit status {}".format('http',1078)
+        if 'http' in request:
+          self.send_req = {'store_request':request}
+          # Getting "recieved data" from requested http link requires json formatted code
+          # To give the requests "read value" information
+          if used_for_data == {f'signal_{signal_name}':None}:
+            raise Exception(f"Error @ data {used_for_data}")
+            return "Error @ data {} with exit status {}".format(used_for_data,1078)
+          if not used_for_data == {f'signal_{signal_name}':None}:
+            self.links_to_be_opened.append([f'{request}'])
+            self.store_data_being_transfered = [used_for_data, {'LINK':f'{self.links_to_be_opened}'}]
+            write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+            self.opened_file_write.write(write_to_json)
+            self.opened_file_write.close()
+      
+      # WE DO NOT WANT ANYTHING TO HAPPEN. It's a port not a client get-store-recieve. This just returns a value
       if f'{signal_types[4]}' in self.last_signal_used:
         if request == 'a01be':
           return "Client got signal {} with exit status {}".format(request,1078)
