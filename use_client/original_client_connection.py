@@ -79,6 +79,8 @@ class data_to_send_through_file:
     self.store_req = bool
     self.req_resp = []
     self.req_stored_data = []
+    self.addapting = []
+    self.set_new_mini_port = []
     self.signal_request = []
     self.appended_file = ""
     self.signal = ""
@@ -121,7 +123,7 @@ class data_to_send_through_file:
         self.signal = signal_types[-1]
         self.store_req = store_req
         self.get_resp = get_response
-        if request in signal_type_request[signal_name]:
+        if request in signal_type_request[self.signal]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
           self.last_signal_used.appened([{f'{signal_types[-1]}':f'{self.store_data_being_used}'}])
@@ -143,7 +145,7 @@ class data_to_send_through_file:
           
       if signal_name == signal_types[1]:
         self.signal = signal_types[1]
-        if request in signal_type_request[signal_name]:
+        if request in signal_type_request[self.signal]:
           self.send_req = request
           self.store_data_being_transfered = used_for_data
           self.last_signal_used.append([{f'{signal_types[1]}':f'{self.store_data_being_transfered}'}])
@@ -168,7 +170,7 @@ class data_to_send_through_file:
         self.signal = signal_type[2]
         self.get_resp = get_response
         self.store_req = store_req
-        if request in signal_type_request[signal_name]:
+        if request in signal_type_request[self.signal]:
           self.send_req = request
           if not used_for_data == {}:
             self.store_data_being_transfered = used_data_for
@@ -201,8 +203,9 @@ class data_to_send_through_file:
        self.signal = signal_types[3]
        self.get_resp = get_response
        self.store_req = store_req
-       if requests in signal_type_request[signal_name]:
+       if request in signal_type_request[self.signal]:
           print(signal_types)
+          self.send_req = request
           signal_request_to_send = input("Type the signal >> ")
           if signal_request_to_send in signal_types:
             self.siganl = signal_types[signal_request_to_send]
@@ -224,7 +227,36 @@ class data_to_send_through_file:
             return self.req_stored_data
           else:
             pass
-          
+      
+      if signal_name == signal_types[4]:
+        self.signal = signal_types[4]
+        self.get_resp = get_response
+        self.store_req = store_req
+        # THE CLIENT WILL ADAPT TO ANOTHER .json FILE
+        if request == 'adapt_with_client':
+          self.send_req = request
+          client_to_adapt_to = input('Create file for client to adapt to(.json) >> ')
+          client_open_file_addapting = open(f'{client_to_adapt_to}','r')
+          self.addapting.append([{'Client_Adapted_File':f'{client_to_adapt_to}','File_Data':f'{client_open_file_addapting.read()}'}])
+          self.store_data_being_transfered = self.addapting
+          self.last_signal_used.append([{f'{signal_types[4]}':f'{self.store_data_being_transfered}'}])
+          write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+          self.opened_file_write.write(write_to_json)
+          self.opened_file_write.close()
+          return "Executed .json file {}\nExit status {}".format(client_to_adapt_to,1078)
+        elif requests == 'start_mini_port_signal':
+          self.send_req = request
+          self.set_new_mini_port.append([{'New_Port_Signal':'a01be'}])
+          self.store_data_being_transfered = self.set_new_mini_port
+          write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+          self.opened_file_write.write(write_to_json)
+          self.opened_file_write.close()
+      
+      # WE DO NOT WANT ANYTHING TO HAPPEN. It's a port not a client get-store-return value
+      if f'{signal_types[4]}' in self.last_signal_used:
+        if request == 'a01be':
+          return "Client got signal {} with exit status {}".format(request,1078)
+      
       self.signal = signal_name
       self.send_req = request
       self.get_resp = get_response
