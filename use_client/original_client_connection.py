@@ -213,7 +213,7 @@ class data_to_send_through_file:
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
           if self.get_resp == True:
-            self.req_resp.append(f"{self.last_signal_used[f'{signal_types[3]}']}"])
+            self.req_resp.append([f"{self.last_signal_used[f'{signal_types[3]}']}"])
             print(self.req_resp)
             return self.req_resp
           else:
