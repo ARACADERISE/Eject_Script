@@ -107,30 +107,11 @@ class data_to_send_through_file:
         OPEN_CLIENT_FILE_WRITE.write(data_to_send)
         OPEN_CLIENT_FILE_WRITE.close()
 
-class SIGNAL:
-  def __init__(self):
-    self.port = port
-    self.send_req = ""
-    self.get_resp = bool
-    # THIS WILL BE USEFULL FOR WHEN WE WANT THE PROGRAM TO OPEN AND GET THE REQUESTS FROM THE LINK
-    self.links_to_be_opened = []
-    self.store_req = bool
-    self.req_resp = []
-    self.req_stored_data = []
-    self.addapting = []
-    self.set_new_mini_port = []
-    self.signal_request = []
-    self.appended_file = ""
-    self.signal = ""
-    self.last_signal_used = []
-    self.store_data_being_transfered = ""
-    self.opened_file_write = open('client.json','w')
-    self.opened_file_read = open('client.json','r')
   # set to use_of_client by default
   # EXAMPLE USE: lets say we assigned the name f to data_to_send_through_file
   # then we would do
-  # f.__use__signal__('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
-  def __use__signal__(self,signal_name,request,get_response=bool,store_req=bool,used_for_data):
+  # f.use_signal('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
+  def use_signal(self,signal_name,request,get_response=bool,store_req=bool,used_for_data):
     
     if signal_name == '':
       signal_name = 'default'
