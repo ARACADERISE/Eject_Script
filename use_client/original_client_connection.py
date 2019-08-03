@@ -7,7 +7,7 @@
   * made the one if statement(which would be the use of a function, to only write one if statement) to work.
   * I rather re-type the if statements for each signal and know it's gonna work than do a function and run into errors
   
-  * @TODO: I might make the signals into a sql database so users can pull using a python script(sqlite3) the signal data
+  * TODO: I might make the signals into a sql database so users can pull using a python script(sqlite3) the signal data
 """
 
 import json, os, sys
@@ -35,8 +35,6 @@ signal_types = [
   "http",
   # https: Will excpect a https request signal(a website link)
   "https",
-  # rgbyt: Sends mini bytes to port to support client when both recieving, getting, pulling, and storing request
-  "rgbyt",
   # loi: a lazy way of of telling the client to ignore a specific get request
   "loi",
   # This will be the default send-get-recieve request if no arguments are passed for signal_name and request
@@ -272,7 +270,26 @@ class data_to_send_through_file:
             return "Error @ data {} with exit status {}".format(used_for_data,1078)
           if not used_for_data == {f'signal_{signal_name}':None}:
             self.links_to_be_opened.append([f'{request}'])
-            self.store_data_being_transfered = [used_for_data, {'LINK':f'{self.links_to_be_opened}'}]
+            self.store_data_being_transfered = [used_for_data, self.send_req, {'LINK':f'{self.links_to_be_opened}'}]
+            write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+            self.opened_file_write.write(write_to_json)
+            self.opened_file_write.close()
+      
+      if signal_name == signal_types[6]:
+        self.signal = signal_types[6]
+        self.store_req = store_req
+        self.get_resp = get_response
+        if not 'https' in request:
+          raise Exception("Error @ https")
+          return "Error @ {} with exit status {}".format('https',1078)
+        if 'https' in request:
+          self.send_req = {'store_request':request}
+          if used_for_data == {f'signal_{signal_name}':None}:
+            raise Exception(f"Error @ {used_for_data}")
+            return "Error @ {} with exit status {}".format(used_for_data,1078)
+          if not used_for_data == {f'signal_{signal_name}':None}:
+            self.links_to_be_opened.append([f'{request}'])
+            self.store_data_being_transfered = [used_for_data, self.send_req, {'LINK':f'{self.links_to_be_opened}'}]
             write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
