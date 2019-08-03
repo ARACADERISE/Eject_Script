@@ -107,11 +107,8 @@ class data_to_send_through_file:
         OPEN_CLIENT_FILE_WRITE.write(data_to_send)
         OPEN_CLIENT_FILE_WRITE.close()
 
-  # set to use_of_client by default
-  # EXAMPLE USE: lets say we assigned the name f to data_to_send_through_file
-  # then we would do
-  # f.use_signal('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
-  def use_signal(self,signal_name,request,get_response=bool,store_req=bool,used_for_data):
+  # CLIENT SIGNALS THAT WILL BE USED
+  def use_signal(self,get_response=bool,store_req=bool,used_for_data,signal_name,request):
     
     if signal_name == '':
       signal_name = 'default'
