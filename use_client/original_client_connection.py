@@ -270,7 +270,7 @@ class data_to_send_through_file:
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
           if self.get_resp == True:
-            self.req_resp.append(f"{self.last_signal_used[f'{signal_types[5]}']}"])
+            self.req_resp.append([f"{self.last_signal_used[f'{signal_types[5]}']}"])
             print(self.req_resp)
             return self.req_resp
           else:
@@ -307,7 +307,7 @@ class data_to_send_through_file:
           else:
             pass
           if self.store_req == True:
-            self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[6]}']}")
+            self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[6]}']}"])
             print(self.req_stored_data)
             return self.req_stored_data
           else:
