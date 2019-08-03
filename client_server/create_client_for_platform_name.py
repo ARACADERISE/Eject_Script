@@ -9,7 +9,7 @@ NAME = 'user-cli'
 CREATE_CLIENT = f'a01\\{NAME}-|-{os.name}.{sys.platform}[{os.getgid()}--.{os.getegid()}]|noll_nom_om/|\='
 TOTAL_BYTES = 5000
 PATH = '/data/data/com.termux/files/home'
-DATABASE_SIGNAL_CONNECTIONS = ['cco','bo1','a01','ct4','phh','http','https','rgbyt','loi']
+DATABASE_SIGNAL_CONNECTIONS = ['cco','bo1','a01','ct4','phh','http','https','default']
 CLIENT = []
 try:
   # this will "run" the client for a bootup
