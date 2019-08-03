@@ -108,7 +108,7 @@ class data_to_send_through_file:
         OPEN_CLIENT_FILE_WRITE.close()
 
   # CLIENT SIGNALS THAT WILL BE USED
-  def use_signal(self,get_response=bool,store_req=bool,used_for_data,signal_name,request):
+  def use_signal(self):
     
     if signal_name == '':
       signal_name = 'default'
