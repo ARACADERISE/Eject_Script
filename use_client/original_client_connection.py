@@ -6,6 +6,8 @@
   * due to the fact that if I were to make a function(def) it would have to take certain arguments that
   * made the one if statement(which would be the use of a function, to only write one if statement) to work.
   * I rather re-type the if statements for each signal and know it's gonna work than do a function and run into errors
+  
+  * @TODO: I might make the signals into a sql database so users can pull using a python script(sqlite3) the signal data
 """
 
 import json, os, sys
