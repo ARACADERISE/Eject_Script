@@ -1,8 +1,0 @@
-cd
-case "$1" in
-  -file)
-    echo "File"
-  ;;
-  *)
-    echo "ARGUMENT: -file"
-esac
