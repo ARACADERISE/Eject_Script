@@ -117,7 +117,6 @@ class data_to_send_through_file:
     if request == '':
       request = 'use_of_client'
       
-    if get_response == 
     if signal_name in signal_types:
       if signal_name == signal_types[0]:
         raise Exception('Error. The signal cco is not available')
