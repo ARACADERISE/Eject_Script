@@ -110,7 +110,14 @@ class data_to_send_through_file:
   # EXAMPLE USE: lets say we assigned the name f to data_to_send_through_file
   # then we would do
   # f.__use__signal__('bo1',request='get_data',get_response=True,store_req=True,used_for_data={'insert_type':'sql_database','at_file':'this.db'})
-  def __use__signal__(self,signal_name="default",request='use_of_client',get_response=bool(False),store_req=bool(False),used_for_data={f'signal_{signal_name}':None}):
+  def __use__signal__(self,signal_name,request,get_response=bool,store_req=bool,used_for_data):
+    
+    if signal_name == '':
+      signal_name = 'default'
+    if request == '':
+      request = 'use_of_client'
+      
+    if get_response == 
     if signal_name in signal_types:
       if signal_name == signal_types[0]:
         raise Exception('Error. The signal cco is not available')
