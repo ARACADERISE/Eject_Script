@@ -128,13 +128,13 @@ class data_to_send_through_file:
           self.opened_file_write.write(write_to_json)
           self.opened_file_write.close()
         if self.get_resp == True:
-          self.req_resp.append(f"{self.last_signal_used[f'{signal_type[-1]}']}"])
+          self.req_resp.append([f"{self.last_signal_used[f'{signal_type[-1]}']}"])
           print(self.req_resp)
           return self.req_resp
         else:
           pass
         if self.store_req == True:
-          self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[-1]}']}")
+          self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[-1]}']}"])
           print(self.req_stored_data)
           return self.req_stored_data
         else:
@@ -183,12 +183,12 @@ class data_to_send_through_file:
           if self.get_resp == False:
             self.get_resp = True
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_types[-1]}']}"])
+              self.req_resp.append([f"{self.last_signal_used[f'{signal_types[-1]}']}"])
               print(self.req_resp)
               return self.req_resp
           else:
             if self.get_resp == True:
-              self.req_resp.append(f"{self.last_signal_used[f'{signal_types[-1]}']}"])
+              self.req_resp.append([f"{self.last_signal_used[f'{signal_types[-1]}']}"])
               print(self.req_resp)
               return self.req_resp
           if self.store_req == True:
@@ -219,7 +219,7 @@ class data_to_send_through_file:
           else:
             pass
           if self.store_req == True:
-            self.req_stored_data.append(f"{self.last_signal_used[f'{signal_type[3]}']}")
+            self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[3]}']}"])
             print(self.req_stored_data)
             return self.req_stored_data
           else:
@@ -269,6 +269,18 @@ class data_to_send_through_file:
             write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
+          if self.get_resp == True:
+            self.req_resp.append(f"{self.last_signal_used[f'{signal_types[5]}']}"])
+            print(self.req_resp)
+            return self.req_resp
+          else:
+            pass
+          if self.store_req == True:
+            self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[5]}']}"])
+            print(self.req_stored_data)
+            return self.req_stored_data
+          else:
+            pass
       
       if signal_name == signal_types[6]:
         self.signal = signal_types[6]
@@ -288,6 +300,18 @@ class data_to_send_through_file:
             write_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
             self.opened_file_write.write(write_to_json)
             self.opened_file_write.close()
+          if self.get_resp == True:
+            self.req_resp.append([f"{self.last_signal_used[f'{signal_types[6]}']}"])
+            print(self.req_resp)
+            return self.req_resp
+          else:
+            pass
+          if self.store_req == True:
+            self.req_stored_data.append([f"{self.last_signal_used[f'{signal_type[6]}']}")
+            print(self.req_stored_data)
+            return self.req_stored_data
+          else:
+            pass
       
       # WE DO NOT WANT ANYTHING TO HAPPEN. It's a port not a client get-store-recieve. This just returns a value
       if f'{signal_types[4]}' in self.last_signal_used:
