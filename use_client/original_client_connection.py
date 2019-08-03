@@ -35,8 +35,6 @@ signal_types = [
   "http",
   # https: Will excpect a https request signal(a website link)
   "https",
-  # loi: a lazy way of of telling the client to ignore a specific get request
-  "loi",
   # This will be the default send-get-recieve request if no arguments are passed for signal_name and request
   "default"
 ]
@@ -56,10 +54,7 @@ signal_type_request = {
   # You type in the link and the signal type will take in the request and get requests from the link
   'http': ['link_request_data'], # 5
   'https': ['link_request_data'], # 6
-  
-  'rgbyt': ['bytes_to_client'], # 7
-  'loi': ['ignore'], # 8
-  'default': ['use_of_client'] # 9
+  'default': ['use_of_client'] # 7
 }
 
 # Implementing into the client.json what signals it will now recieve
