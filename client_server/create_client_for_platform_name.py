@@ -8,6 +8,7 @@ from use_client.original_client_connection import data_to_send_through_file
 NAME = 'user-cli'
 CREATE_CLIENT = f'a01\\{NAME}-|-{os.name}.{sys.platform}[{os.getgid()}--.{os.getegid()}]|noll_nom_om/|\='
 TOTAL_BYTES = 5000
+PATH = '/data/data/com.termux/files/home'
 DATABASE_SIGNAL_CONNECTIONS = ['cco','bo1','a01','ct4','phh','http','https','rgbyt','loi']
 CLIENT = []
 try:
@@ -82,11 +83,15 @@ try:
 finally:
   # For the fact that the .json file stores very simple data that doesn't change
   # we will make it to where it uploades once
-  if not os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
-    def json_data(dumping):
-      with open('client.json','w') as c_j:
-        json.dump(dumping,c_j,indent=2,sort_keys=True)
-      return "Status upgrade with info in json files with exit status",1078
-    json_data(CLIENT)
-  if os.path.exists('/data/data/com.termux/files/home/sLang/client.json'):
-    pass
+  if not os.path.exists(f'{PATH}'):
+    prev = f'{PATH}/slang'
+    if not os.path.exists(f'{prev}/client.json'):
+      def json_data(dumping):
+        with open('client.json','w') as c_j:
+          json.dump(dumping,c_j,indent=2,sort_keys=True)
+        return "Status upgrade with info in json files with exit status",1078
+      json_data(CLIENT)
+  if os.path.exists(f'{PATH}'):
+    prev = f'{PATH}/sLang'
+    if os.path.exists(f'{prev}/client.json'):
+      pass
