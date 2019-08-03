@@ -325,34 +325,33 @@ class data_to_send_through_file:
         if request == 'a01be':
           return "Client got signal {} with exit status {}".format(request,1078)
       
-      self.signal = signal_name
-      self.send_req = request
-      self.get_resp = get_response
-      self.store_req = store_req
+      #self.signal = signal_name
+      #self.send_req = request
+      #self.store_req = store_req
       
-      if self.send_req:
-        self.store_data_being_transfered = used_for_data
-        if self.get_resp:
-          transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
-          self.opened_file_write.write(transfer_to_json)
-          if self.store_data_being_transfered in self.openend_file_read.read():
-            self.opened_file_write.close()
-            return "Data sent..{}. Data recieved {}".format(self.store_data_being_transfered,"client_got_data")
-          else:
-            self.opened_file_write.close()
-            return "Data sent..{}".format(self.store_data_being_transfered)
-        else:
-          transfer_to_json = json.dumps(self.data_being_transfered,indent=2,sort_keys=True)
-          self.opened_file_write.write(transfer_to_json)
-          if self.store_data_being_transfered in self.opened_file_read.read():
-            self.opened_file_write.close()
-          else:
-            self.opened_file_write.close()
-      else:
-        self.store_data_being_transfered = [{'status':'no data','used_for':'get_signal'}]
-        transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
-        self.opened_file_write.write(transfer_to_json)
-        self.opened_file_write.close()
+      #if self.send_req:
+      #  self.store_data_being_transfered = used_for_data
+      #  if self.get_resp:
+      #    transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+      #    self.opened_file_write.write(transfer_to_json)
+      #    if self.store_data_being_transfered in self.openend_file_read.read():
+      #      self.opened_file_write.close()
+      #      return "Data sent..{}. Data recieved {}".format(self.store_data_being_transfered,"client_got_data")
+      #    else:
+      #      self.opened_file_write.close()
+      #      return "Data sent..{}".format(self.store_data_being_transfered)
+      #  else:
+      #   transfer_to_json = json.dumps(self.data_being_transfered,indent=2,sort_keys=True)
+      #    self.opened_file_write.write(transfer_to_json)
+      #    if self.store_data_being_transfered in self.opened_file_read.read():
+      #      self.opened_file_write.close()
+      #    else:
+      #      self.opened_file_write.close()
+      #else:
+      #  self.store_data_being_transfered = [{'status':'no data','used_for':'get_signal'}]
+      #  transfer_to_json = json.dumps(self.store_data_being_transfered,indent=2,sort_keys=True)
+      #  self.opened_file_write.write(transfer_to_json)
+      #  self.opened_file_write.close()
           
         
 if os.path.exists(f'{directory_to_connect_to}'):
