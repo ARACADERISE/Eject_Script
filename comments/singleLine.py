@@ -6,6 +6,7 @@
 """
 
 import os
+from colorama import Fore
 
 def comment(directory,file_name):
   cmd = f"""
