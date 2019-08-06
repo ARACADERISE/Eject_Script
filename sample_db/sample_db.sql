@@ -16,7 +16,7 @@ CREATE TABLE database (
 -- But in case we feel the need, this will..and should be, what it will look like
 ALTER TABLE database
 -- The name and type will be different, of course
-ADD COLUMN COLUMN_NAME TEXT UNIQUE DEFAULT "NoINFO";
+ADD COLUMN COLUMN_NAME TEXT UNIQUE DEFAULT "NoINFOSHOWED";
 
 -- This is fake data for the sample database
 -- type 1, type2 etc do not stand for anything. I just do not know how many row types there will be for the database
