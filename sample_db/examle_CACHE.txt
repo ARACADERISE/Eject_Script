@@ -1,0 +1,10 @@
+this is a example of what the CACHE.txt should look like:
+
+###CACHE_CONNECTION_DATA###
+
+#- This File Is The "Catch File" For All Data Being Transfered -#
+
+ [#- Cache_Port_Opened_@_PORT:18080 -#]
+
+ [#- EJECTING_sql -#]
+
