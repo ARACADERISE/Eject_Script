@@ -3,7 +3,7 @@
 """
 
 from start_engine import starter
-from begin_eject import ejector
+# from begin_eject import ejector
 
 # Establish connection
 start = starter('connection.txt','18080','sql')
