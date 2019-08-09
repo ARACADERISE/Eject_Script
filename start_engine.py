@@ -85,4 +85,4 @@ class starter:
   def startEjecting(self):
 
     if os.path.exists('/home/runner/connection.txt') and os.path.exists('/home/runner/eject_type_info.txt'):
-      self.eject.enterPath(input('Directory of .db file >> '))
+      self.eject.enterPath(input('\nDirectory of .db file >> '),open('CACHE.txt','w'),self.est_connection)
