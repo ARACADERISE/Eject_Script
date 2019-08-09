@@ -8,6 +8,9 @@ class ejector:
     self.port = ""
     self.path = ""
     self.dir_path = ""
+    self.abs_path = ""
+    self.CACHE_FILE = ""
+    self.use_to_upd = ""
   
   def getPort(self, port_name):
     self.port = port_name
@@ -15,6 +18,9 @@ class ejector:
     self.upd_file = []
     self.upd_with_error = ""
     self.warning_FOR_USER = ""
+    self.exact = ""
+    self.file_OPENED = ""
+    self.file_OPENED_read = ""
 
     if os.path.exists('/home/runner/eject_type_info.txt'):
 
@@ -82,15 +88,30 @@ class ejector:
           file.write(b)
           file.close()
   
-  def enterPath(self, path):
-    self.path = path
+  def enterPath(self, path, CACHE_FILE, use_to_upd):
+    # self.path = path
+    self.abs_path = path
+    self.CACHE_FILE = CACHE_FILE
+    self.use_to_up = use_to_upd
 
-    if os.path.exists(self.path):
+    if os.path.exists(self.abs_path):
       import sqlite3
       os.system(f'cd && cd {self.path} && ls')
 
       file_ = input('\n.db file >> ')
+
+      if not os.path.exists(file_):
+        raise Exception('file does not exists')
+        return "Exited with error with exit status {}".format(1078)
+
+      # No reason as to why we have self.exact. Possibly for possible future errors with self.path?
+      # TODO: Can we use self.exact later for a actual purpose that of what self.path cannot succeed?
+      self.exact = file_
+
+      # This will be used as the renderer for opening the .db file to write into
+      # NOTE: This flexuates. Look AT line 92 and notice we re-assigned the self.path value below:
       self.path = file_
+
       with open(f'{self.path}','w') as file:
 
         connect = sqlite3.connect(self.path)
@@ -100,26 +121,87 @@ class ejector:
 
         if type_ == '1':
           other_dir = input('\nDirectory of existing .sql >> ')
+
+          # ERROR TYPE 1 FOR directory(other_dir)
+          # NOTE: type of empty string(invalid type dir)
+          if other_dir == '':
+            raise Exception('Empty directory lead into a compilation error')
+            return "Compilation error with exit status {}".format(1078)
+
+          # ERROR TYPE 1 FOR directory(other_dir)
+          # NOTE: type of directory not existing
+          if not os.path.exists(other_dir):
+            raise Exception('Directory does not exists: {}'.format(other_dir))
+            return "Directory does not exists error with exit status {}".format(1078)
+
           os.system(f'cd && cd {other_dir} && ls')
           file_NAME = input('\n.sql FILE NAME >> ')
+
+          if not os.path.exists(file_NAME):
+            raise Exception('file does not exists')
+            return "Exited with error with exit status {}".format(1078)
+
           if not '.sql' in file_NAME:
             raise Exception(f'Error @ syntax "{file_NAME}"')
           elif '.sql' in file_NAME:
-            if os.path.exists(f'{other_dir}/{file_NAME}'):
-              open_file = open(file_NAME,'r')
+            if os.path.exists(file_NAME):
+
+              open_file = open(file_NAME,'r').read()
+              #self.file_OPENED_read = open_file.read()
+
+              self.file_OPENED = open(file_NAME,'r')
 
               with open(self.path,'w') as file:
-                file.write(f'{self.upd_file_with}')
-                crs.execute(open_file.read())
-                crs.fetchall()
+
+                file.write(f'{self.upd_file_with}'+' '+f'STATUS_PORT_{self.port}')
+
+                if 'TABLE' or 'table' in open_file.read():
+                  crs.execute(self.file_OPENED.read())
+                  crs.fetchall()
+                else:
+                  raise Exception('In order to inject/eject sql there has to be a table')
+                  return "Sql ejection failed with exit status {}".format(1078)
+                
+                file.close()
+
+              # FINAL EJECTED VERSION FILE
+              with open('EJECT_FINAL.db','w') as file:
+                file.write(open(file_NAME,'r').read())
+                file.close()
+              
+              if 'TABLE' or 'table' in open(self.path,'r').read():
+                self.file_OPENED.close()
+
+            else:
+              raise Exception(f'Error @ syntax: Path {file_NAME} does not exists')
+              return "Exit with FileDoesNotExists error withe exit status {}".format(1078)
 
           else:
             time.sleep(2)
             print('\nNo such directory')
+        
+        if type_ == '2':
+          pass
+        
+        if type_ == '':
+          raise IOError('Error @ syntax: User did not give input value')
+          return "Error with exit status {}".format(1078)
+        
+        if not type_ == '' and not type_ == '1' and not type_ == '2':
+          raise  Exception('User did not input a valid identifier for the application to compile')
+          return "Error @ syntax: No valid input validator for application_compiler. Exit status {}".format(1078)
+ 
+        # re-opening the .db file
+        open_db_ = open('EJECT_FINAL.db','r')
 
+        # printing the data
+        if 'TABLE' or 'table' in open(self.exact,'r').read():
+          print('\nInserted type {} \n\ntype {} data is:\n{}'.format('TABLE/table','TABLE/table',open_db_.read()))
+        # establishing sql enjection/ejection
         connect.commit()
         connect.close()
 
     else:
       time.sleep(2)
-      print('\nNo such directory')
+      print('\nNo such directory: {}'.format(self.abs_path))
+  
