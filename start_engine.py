@@ -1,6 +1,7 @@
 import os, sys, json, time
 from begin_eject import ejector
 
+# TODO: Can we use this assignment for storing data in the future??
 # GLOABL_DATA = []
 
 class starter:
