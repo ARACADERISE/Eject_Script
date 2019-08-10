@@ -1,7 +1,7 @@
 import os, sys, json, time
 from begin_eject import ejector
 
-GLOABL_DATA = []
+# GLOABL_DATA = []
 
 class starter:
   def __init__(self, open_file, port, ejection):
