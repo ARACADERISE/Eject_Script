@@ -92,12 +92,7 @@ class starter:
         self.est_connection="###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.start_port} -#]"
       with open('CACHE.txt','w') as file:
         file.write(self.est_connection)
-        file.close()
-      
-      with open('c.txt','w') as file:
-        file.write(self.est_connection)
-        file.close()
-      
+        file.close() 
   
   def startEjecting(self):
 
