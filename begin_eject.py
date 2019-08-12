@@ -93,7 +93,7 @@ class ejector:
     # self.path = path
     self.abs_path = path
     self.CACHE_FILE = CACHE_FILE
-    self.use_to_up = use_to_upd
+    #self.use_to_upd = use_to_upd
 
     if os.path.exists(self.abs_path):
       import sqlite3
@@ -219,7 +219,15 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
         time.sleep(4)
         if add_more == 'y' or add_more == 'Y':
           print('\n\nDONE WITH NO ERRORS\n\nSuccess with ejection:\n\n{}\n{}\n{}'.format(open('TABLE.sql','r').read(),ALTER,INSERT_INTO))
+
+          with open('CACHE.txt','w') as file:
+            # we have to re-assign the values before for it's a .txt file
+
+            file.write("###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.port} -#]"+"\n\n"+f' [#- EJECTING_{self.upd_file_with} -#]'+'\n\n'+'  \n'+f'[#- TABLE_\n{open("TABLE.sql","r").read()} -#]'+'\n\n'+'  \n[#- EJECT_SUCCESSFUL -#]')
+            file.close()
+
           return "Done with no errors and exit status {}".format(1078)
+          
         else:
           print('\n\nDONE WITH NO ERRORS\n\nSuccess with ejection:\n\n{}\n{}'.format(open('TABLE.sql','r').read(),INSERT_INTO))
           return "Done with no errors and exit status {}".format(1078)
