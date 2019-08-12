@@ -181,6 +181,11 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}',{info})
 INSERT INTO DATABASE_ (ID,SYSTEM_,TOKE, {ROW_NAME})
 VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}','{info}')
                   """
+              else:
+                INSERT_INTO = f"""
+INSERT INTO DATABASE_ (ID,SYSTEM_,TOKE)
+VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
+                  """
 
               crs.execute(INSERT_INTO)
 
@@ -189,7 +194,8 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}','{info}')
                 ult_file_for_sql.write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+ALTER+INSERT_INTO)
                 ult_file_for_sql.close()
               else:
-                ult_file_for_sq = open('ult_sql_file.sql','w').write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+INSERT_INTO)
+                ult_file_for_sql = open('ult_sql_file.sql','w')
+                ult_file_for_sql.write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+INSERT_INTO)
                 ult_file_for_sql.close()
 
             crs.fetchall()
@@ -215,7 +221,7 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}','{info}')
           print('\n\nDONE WITH NO ERRORS\n\nSuccess with ejection:\n\n{}\n{}\n{}'.format(open('TABLE.sql','r').read(),ALTER,INSERT_INTO))
           return "Done with no errors and exit status {}".format(1078)
         else:
-          print('\n\nDONE WITH NO ERRORS\n\nSuccess with eject status:\n{}\n{}'.format(open('TABLE.sql','r').read(),INSERT_INTO))
+          print('\n\nDONE WITH NO ERRORS\n\nSuccess with ejection:\n\n{}\n{}'.format(open('TABLE.sql','r').read(),INSERT_INTO))
           return "Done with no errors and exit status {}".format(1078)
 
     else:
