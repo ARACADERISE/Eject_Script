@@ -18,19 +18,25 @@ if not 'start_file=start_engine.py' in open('database.env','r').read():
 if not 'eject_py_script=begin_eject.py' in open('database.env','r').read():
   raise Exception('eject_py_script=begin_eject.py::corrupted')
 
-if '18080' in open('database.env','r').read() and 'start_by=engine' in open('database.env','r').read():
-  from start_engine import starter
-  # from begin_eject import ejector
+# Put into a try block in case of a possible error
+try:
+  if '18080' in open('database.env','r').read() and 'start_by=engine' in open('database.env','r').read():
+    from start_engine import starter
+    # from begin_eject import ejector
 
-  # Establish connection
-  start = starter('connection.txt','18080','sql')
-  start.getConnection(start_connection=True)
+    # Establish connection
+    start = starter('connection.txt','18080','sql')
+    start.getConnection(start_connection=True)
 
-  # Start cache process
-  start.startCaching()
+    # Start cache process
+    start.startCaching()
 
-  # Ejection process
-  start.startEjecting();
+    # Ejection process
+    start.startEjecting();
+except:
+  sleep(4)
+  
+  raise Exception('connection port 18080 and start_by=engine not found in database.env')
 else:
   sleep(4)
   
