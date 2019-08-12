@@ -1,7 +1,6 @@
 import os, sys, json, time
 from begin_eject import ejector
 
-# TODO: Can we use this assignment for storing data in the future??
 # GLOABL_DATA = []
 
 class starter:
@@ -74,6 +73,18 @@ class starter:
   def startCaching(self):
 
     if self.python_version > str(float(3.4)):
+
+      # CHECKING THE FILE FOR ERRORS AFTER IT HAS BEEN MADE
+      if os.path.exists('/home/runner/CACHE.txt'):
+        if not '###' in open('CACHE.txt','r').read():
+          with open('CACHE.txt','w') as file:
+            file.write("###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.start_port} -#]"+"\n\n"+f' [#- EJECTING_{self.eject_type} -#]'+'\n\n')
+            file.close()
+          
+          print('Fixing corrupted files...')
+          time.sleep(5)
+
+          raise Exception('The file: CACHE.txt -- is corrupted @ syntax \"###\"\nFIXED AT 6 SECONDS')
       
       if 'sql' in open('eject_type_info.txt','r').read():
         self.est_connection="###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.start_port} -#]"+"\n\n"+f' [#- EJECTING_{self.eject_type} -#]'+'\n\n'
@@ -82,6 +93,11 @@ class starter:
       with open('CACHE.txt','w') as file:
         file.write(self.est_connection)
         file.close()
+      
+      with open('c.txt','w') as file:
+        file.write(self.est_connection)
+        file.close()
+      
   
   def startEjecting(self):
 
