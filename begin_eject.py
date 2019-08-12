@@ -1,4 +1,4 @@
-import os, sys, json, time
+import os, sys, json, time, math
 
 class ejector:
   def __init__(self, eject_type):
@@ -11,6 +11,7 @@ class ejector:
     self.abs_path = ""
     self.CACHE_FILE = ""
     self.use_to_upd = ""
+    self.error = ""
   
   def getPort(self, port_name):
     self.port = port_name
@@ -101,6 +102,7 @@ class ejector:
       file_ = input('\n.db file >> ')
 
       if not os.path.exists(file_):
+        time.sleep(2)
         raise Exception('file does not exists')
         return "Exited with error with exit status {}".format(1078)
 
@@ -136,28 +138,85 @@ class ejector:
                 ROW_NAME = input('$USER$ Column Name >> ')
                 TYPE = input('$USER$ Row Type(INTEGER,TEXT) >> ')
 
-                if TYPE == 'TEXT' or TYPE == 'INTEGER':
+                if 'TEXT' in TYPE or 'INTEGER' in TYPE:
                   ALTER = f"""
 ALTER TABLE DATABASE_
-ADD COLUMN {ROW_NAME} {TYPE}
+ADD COLUMN {ROW_NAME} {TYPE};
                   """
-                  crs.execute(ALTER)
+
+                  # NOTE: You cannot alter a column with a specified key. Just the type ONLY
+                  try:
+                    crs.execute(ALTER)
+                  except Exception as e:
+                    print('ERROR OCCURED:\n{}'.format(e))
+                    time.sleep(3)
+                    raise Exception(f'Program failed with status: Unable to add {TYPE} column')
+                    
+
+              elif add_more == 'n' or add_more == 'N':
+                # We want to just continues
+                pass
+              
+              if add_more == 'y' or add_more == 'Y':
+                print('\n\nNEW STATUS:\n{}\n{}{}'.format(open('TABLE.sql','r').read(),ALTER,'\n\n'))
+              else:
+                # The status is already shown
+                pass
+              
+              ID = input('ID >> ')
+              TERMINAL_TYPE = os.name
+              add_up = math.floor(len(TERMINAL_TYPE) * 2 / 4 * 12)
+              TOKE_ = f'{str(add_up*2)}__{TERMINAL_TYPE}_90_USING'
+
+              if add_more == 'y' or add_more == 'Y':
+                if TYPE == 'INTEGER':
+                  info = int(input('Info for altered column >> '))
+                  INSERT_INTO = f"""
+INSERT INTO DATABASE_ (ID,SYSTEM_,TOKE, {ROW_NAME})
+VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}',{info})
+                  """
+                if TYPE == 'TEXT':
+                  info = input('Info for altered column >>')
+                  INSERT_INTO = f"""
+INSERT INTO DATABASE_ (ID,SYSTEM_,TOKE, {ROW_NAME})
+VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}','{info}')
+                  """
+
+              crs.execute(INSERT_INTO)
+
+              if add_more == 'y' or add_more == 'Y':
+                ult_file_for_sql = open('ult_sql_file.sql','w')
+                ult_file_for_sql.write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+ALTER+INSERT_INTO)
+                ult_file_for_sql.close()
+              else:
+                ult_file_for_sq = open('ult_sql_file.sql','w').write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+INSERT_INTO)
+                ult_file_for_sql.close()
 
             crs.fetchall()
             # CLOSING SECURED FILE
             file.close()
         
         if type_ == '':
+          time.sleep(2)
           raise IOError('Error @ syntax: User did not give input value')
           return "Error with exit status {}".format(1078)
         
         if not type_ == '' and not type_ == '1':
+          time.sleep(2)
           raise  Exception('User did not input a valid identifier for the application to compile')
           return "Error @ syntax: No valid input validator for application_compiler. Exit status {}".format(1078)
  
         # establishing sql enjection/ejection
         connect.commit()
         connect.close()
+
+        time.sleep(4)
+        if add_more == 'y' or add_more == 'Y':
+          print('\n\nDONE WITH NO ERRORS\n\nSuccess with ejection:\n\n{}\n{}\n{}'.format(open('TABLE.sql','r').read(),ALTER,INSERT_INTO))
+          return "Done with no errors and exit status {}".format(1078)
+        else:
+          print('\n\nDONE WITH NO ERRORS\n\nSuccess with eject status:\n{}\n{}'.format(open('TABLE.sql','r').read(),INSERT_INTO))
+          return "Done with no errors and exit status {}".format(1078)
 
     else:
       time.sleep(2)
