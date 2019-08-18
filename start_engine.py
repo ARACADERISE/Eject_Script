@@ -20,7 +20,7 @@ class starter:
   
   def getConnection(self, start_connection=None):
 
-    if os.path.exists('/home/runner/connection.txt'):
+    if os.path.exists('/data/data/com.termux/files/home/Eject_Script/connection.txt'):
       if not '~[' in open('connection.txt','r').read():
 
         self.start_connection = "\n\n"+"-----------------\n"+"~[ DB_STATUS_STARTING_WITH_STATUS_1078 ]~"+"\n-----------------"
@@ -75,7 +75,7 @@ class starter:
     if self.python_version > str(float(3.4)):
 
       # CHECKING THE FILE FOR ERRORS AFTER IT HAS BEEN MADE
-      if os.path.exists('/home/runner/CACHE.txt'):
+      if os.path.exists('/data/data/com.termux/files/home/Eject_Script/CACHE.txt'):
         if not '###' in open('CACHE.txt','r').read():
           with open('CACHE.txt','w') as file:
             file.write("###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.start_port} -#]"+"\n\n"+f' [#- EJECTING_{self.eject_type} -#]'+'\n\n')
@@ -96,5 +96,5 @@ class starter:
   
   def startEjecting(self):
 
-    if os.path.exists('/home/runner/connection.txt') and os.path.exists('/home/runner/eject_type_info.txt'):
+    if os.path.exists('/data/data/com.termux/files/home/Eject_Script/connection.txt') and os.path.exists('/data/data/com.termux/files/home/Eject_Script/eject_type_info.txt'):
       self.eject.enterPath(input('\nDirectory of .db file >> '),open('CACHE.txt','w'),self.est_connection)
