@@ -158,7 +158,7 @@ ADD COLUMN {ROW_NAME} {TYPE};
                     
 
               elif add_more == 'n' or add_more == 'N':
-                # We want to just continues
+                # We want to just continue
                 pass
               
               if add_more == 'y' or add_more == 'Y':
