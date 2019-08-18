@@ -192,6 +192,8 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
                   """
 
               crs.execute(INSERT_INTO)
+              # We already know the rendered TABLE/table name
+              crs.execute('SELECT * FROM DATABASE_')
               get_all_data = crs.fetchall()
 
               for i in get_all_data:
