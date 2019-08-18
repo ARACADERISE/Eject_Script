@@ -188,6 +188,10 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
                   """
 
               crs.execute(INSERT_INTO)
+              get_all_data = crs.fetchall()
+
+              for i in get_all_data:
+                print('DATA:',i)
 
               if add_more == 'y' or add_more == 'Y':
                 ult_file_for_sql = open('ult_sql_file.sql','w')
@@ -197,8 +201,10 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
                 ult_file_for_sql = open('ult_sql_file.sql','w')
                 ult_file_for_sql.write('-- YOUR SQL DATABASE EJECTION'+'\n\n'+open('TABLE.sql','r').read()+'\n'+INSERT_INTO)
                 ult_file_for_sql.close()
+            
+            connect.commit()
+            connect.close()
 
-            crs.fetchall()
             # CLOSING SECURED FILE
             file.close()
         
@@ -213,8 +219,6 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
           return "Error @ syntax: No valid input validator for application_compiler. Exit status {}".format(1078)
  
         # establishing sql enjection/ejection
-        connect.commit()
-        connect.close()
 
         time.sleep(4)
         if add_more == 'y' or add_more == 'Y':
@@ -223,7 +227,7 @@ VALUES ({ID},'{TERMINAL_TYPE}','{TOKE_}')
           with open('CACHE.txt','w') as file:
             # we have to re-assign the values before for it's a .txt file
 
-            file.write("###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.port} -#]"+"\n\n"+f' [#- EJECTING_{self.upd_file_with} -#]'+'\n\n'+'  \n'+f'[#- TABLE_\n{open("TABLE.sql","r").read()} -#]'+'\n\n'+'  \n[#- EJECT_SUCCESSFUL -#]')
+            file.write("###CACHE_CONNECTION_DATA###\n\n#- This File Is The \"Catch File\" For All Data Being Transfered -#\n\n"+f" [#- Cache_Port_Opened_@_PORT:{self.port} -#]"+"\n\n"+f' [#- EJECTING_{self.upd_file_with} -#]'+'\n\n'+'  \n'+f'[#- EJECT_TABLE\n{open("TABLE.sql","r").read()} -#]'+'\n\n'+'\n\n'+'  \n[#- EJECT_SUCCESSFUL -#]")
             file.close()
 
           return "Done with no errors and exit status {}".format(1078)
