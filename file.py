@@ -1,6 +1,13 @@
 """
   "Putting .txt, .db and .sql files to use"
+  * ROOT BASED: /data/data/com.termux/files/usr/bin
 """
+
+import os
+try:
+  os.system('bash setup_eject.sh')
+except Exception:
+  print(Exception)
 
 from time import sleep
 
