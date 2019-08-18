@@ -4,8 +4,6 @@ if [ ! -d /data/data/com.termux/files/usr/bin/Eject_Script ]; then
   echo "==> Type: Eject_Script to run the Application!"
   cd
   exit
-fi
-
-if [ -d /data/data/com.termux/files/usr/bin/Eject_Script ]; then
+elif [ -d /data/data/com.termux/files/usr/bin/Eject_Script ]; then
   echo "Looks you have already rooted 'Eject_Script' to /usr/bin\nType 'Eject_Script' to run the application"
 fi
