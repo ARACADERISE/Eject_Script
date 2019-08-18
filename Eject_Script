@@ -1,0 +1,5 @@
+# To render the terminal to main directory
+cd
+cd Eject_Script
+# ls
+python file.py
